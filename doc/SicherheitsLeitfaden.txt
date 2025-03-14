@@ -1,0 +1,10 @@
+TLS Certifikt für Avigilon API auf Avigilon Server hinterlegen und in node red einbinden und vertrauen oder Trusted CA Cert kaufen
+TPM auf eigenem Linux Rechner programieren (z.b. RPI) der nciht an Kunden gegeben wird (kann teilweise verhindern dass fehlerhafte konfiguration welche an kunden weitergebebn werden)
+
+Jede Anlage zur not jeder kunde bekommt eine eigenen Public key in der Schnitstelle in Python die schnitstelle muss dafür jedesmall neu gebaut werden werden mit pyinstaller
+
+jedes Passwort für den API Nutzer muss anders sein
+
+der pin auf dem TPM muss für jede Analge neu vergeben werden
+
+die localen slef singed CA und TLS Certs für Chromium auf dem Pult sollten für jedes Pult neu erstellt werden!

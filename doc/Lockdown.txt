@@ -1,0 +1,3 @@
+
+disable root password
+sudo passwd -l root

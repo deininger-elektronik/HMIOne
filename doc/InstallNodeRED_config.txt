@@ -1,0 +1,66 @@
+Copy settings.js via ssh:
+
+/mnt/dietpi_userdata/node-red/settings.js
+
+if the install of `build-essential make g++` on first boot worked the requireed nodes can be installed via the normal node red pallet manager
+
+unlock KeePassXC DB with SHH Agent enabled see documentaion on how to do that.
+
+use `ssh -L 443:localhost:1880 dietpi@10.5.0.115 -N` and then goto https://127.0.0.1 in local browser and install nodes normaly via 
+
+Open Node-RED's Palette Manager:
+
+    Click the menu button in the top-right corner of the Node-RED interface.​
+    Select "Manage Palette" from the dropdown menu.​
+
+Install the Dashboard:
+
+    Navigate to the "Install" tab within the Palette Manager.​
+    In the search bar, type @flowfuse/node-red-dashboard.​
+    Locate the package named @flowfuse/node-red-dashboard and click the "Install" button next to it.​
+	
+	
+Do this for both nodes:	
+	
+node-red-node-pi-mcp3008
+@flowfuse/node-red-dashboard
+
+if you want serial (RS-232 or RS-485)
+node-red-node-serialport
+
+Onyl *IF* that fails reinstall manualy:
+
+update DIetpi instanse with 
+
+`
+sudo dietpi-update
+`
+
+do an apt update and install the tools (they are probably already installed)
+```
+sudo apt update
+sudo apt install -y build-essential make g++
+```
+
+switch to node red user while connected via ssh
+`
+sudo -u nodered -H bash
+`
+
+`
+cd /mnt/dietpi_userdata/node-red
+`
+
+install ADC Node für Joystick
+
+`
+npm install node-red-node-pi-mcp3008
+`
+
+instal Dahsboard 2.0 by Flow fuse team
+
+`
+npm install @flowfuse/node-red-dashboard
+
+`
+

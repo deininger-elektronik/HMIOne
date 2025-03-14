@@ -1,0 +1,122 @@
+
+## **1. Hardware-Setup**
+1. **HAT auf den Raspberry Pi aufstecken** (über GPIO-Header).
+2. **Anschlüsse überprüfen:**
+   - **MCP2515** über SPI mit dem Raspberry Pi verbinden.
+   - **SN65HVD230** mit dem CAN-Bus (CAN_H, CAN_L) verbinden.
+   - **Stromversorgung sicherstellen** (3,3V für MCP2515 und SN65HVD230).
+   - **120Ω Abschlusswiderstände** an beiden Enden des CAN-Bus anbringen.
+
+---
+
+## **2. SPI auf dem Raspberry Pi aktivieren**
+Öffne die Raspberry Pi Konfiguration:
+```sh
+sudo raspi-config
+```
+- Navigiere zu **Interfacing Options > SPI** und aktiviere SPI.
+- Starte den Raspberry Pi neu:
+  ```sh
+  sudo reboot
+  ```
+
+---
+
+## **3. Installation der CAN-Utilities**
+Falls noch nicht vorhanden, installiere die notwendigen CAN-Tools:
+```sh
+sudo apt update
+sudo apt install can-utils
+```
+
+---
+
+## **4. Konfiguration des MCP2515-Treibers**
+Bearbeite die Boot-Konfiguration:
+```sh
+sudo nano /boot/config.txt
+```
+Füge am Ende folgende Zeilen hinzu:
+```
+dtparam=spi=on
+dtoverlay=mcp2515-can0,oscillator=8000000,interrupt=25
+dtoverlay=spi-bcm2835-overlay
+```
+Falls ein **8 MHz Oszillator** verwendet wird, bleibt `oscillator=8000000`. Andernfalls anpassen.
+
+Speichern und schließen (`CTRL+X`, `Y`, `Enter`), dann neu starten:
+```sh
+sudo reboot
+```
+
+---
+
+## **5. CAN-Schnittstelle aktivieren**
+Nach dem Neustart das CAN-Interface starten:
+```sh
+sudo ip link set can0 up type can bitrate 500000
+```
+Überprüfen, ob es aktiv ist:
+```sh
+ifconfig can0
+```
+CAN-Bus-Daten empfangen:
+```sh
+candump can0
+```
+Testnachricht über CAN senden:
+```sh
+cansend can0 123#DEADBEEF
+```
+
+Falls der CAN-Treiber nicht lädt, Ausgabe von **dmesg** überprüfen:
+```sh
+dmesg | grep mcp2515
+```
+
+---
+
+## **6. Node-RED CAN-Bus-Node installieren**
+Falls die **CAN-Bus-Nodes** für Node-RED fehlen:
+1. **Node-RED öffnen** (`http://<Raspberry_Pi_IP>:1880`).
+2. Gehe zu **Palette verwalten > Installieren**.
+3. Suche nach **node-red-contrib-socketcan** und installiere es.
+
+---
+
+## **7. CAN-Schnittstelle in Node-RED einrichten**
+1. **"can in" Node hinzufügen**, um Nachrichten zu empfangen.
+   - `Interface`: `can0`
+2. **"can out" Node hinzufügen**, um Nachrichten zu senden.
+   - `Interface`: `can0`
+3. **"debug" Nodes verwenden**, um empfangene Daten anzuzeigen.
+4. **Flow deployen** und CAN-Daten überwachen.
+
+---
+
+## **8. Automatische CAN-Schnittstellen-Einrichtung beim Booten**
+Falls die CAN-Schnittstelle nach einem Neustart automatisch aktiviert werden soll:
+```sh
+sudo nano /etc/network/interfaces.d/can0
+```
+Füge hinzu:
+```
+auto can0
+iface can0 inet manual
+    pre-up /sbin/ip link set can0 type can bitrate 500000
+    up /sbin/ifconfig can0 up
+    down /sbin/ifconfig can0 down
+```
+Speichern und Neustart durchführen.
+
+---
+
+### **Fehlersuche**
+- **Überprüfe, ob das CAN-Interface korrekt geladen wurde:**
+  ```sh
+  dmesg | grep spi
+  dmesg | grep mcp2515
+  ```
+- **Sicherstellen, dass die Abschlusswiderstände (120Ω) richtig platziert sind.**
+- Falls SPI oder MCP2515 nicht funktioniert, nochmals **/boot/config.txt** und die **GPIO-Verbindungen** kontrollieren.
+

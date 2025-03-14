@@ -1,0 +1,145 @@
+# **🔹 Anleitung: SSH-Agent einrichten & mit KeePassXC nutzen**
+
+## **1 SSH-Agent unter Windows starten**
+
+Der **SSH-Agent** ist ein Dienst unter Windows, der private SSH-Schlüssel verwaltet, sodass diese nicht bei jeder Verbindung erneut eingegeben werden müssen.
+
+Hier ist die überarbeitete Version mit deiner gewünschten Änderung:  
+
+---
+
+### **1.1. Überprüfen, ob der OpenSSH Authentication Agent läuft und ihn aktivieren**  
+
+Damit SSH-Authentifizierung funktioniert, muss der **OpenSSH Authentication Agent (ssh-agent)** aktiv sein. Befolge diese Schritte, um den Dienst zu überprüfen und zu starten.  
+
+#### **1. Dienste-Verwaltung öffnen**  
+1. Drücke **Win + R**, gib `services.msc` ein und bestätige mit **Enter**.  
+2. Es öffnet sich das Fenster **Dienste**, in dem alle Systemdienste aufgelistet sind.  
+
+#### **2. SSH-Agent-Dienst finden und starten**  
+1. Klicke auf einen beliebigen Dienst in der Liste.  
+2. Drücke die Taste **O** auf der Tastatur, um direkt zu den Diensten zu springen, die mit **O** beginnen.  
+3. Suche in der Liste nach **OpenSSH Authentication Agent**.  
+4. Überprüfe die **Status**-Spalte:  
+   - Falls der Dienst bereits läuft, ist keine weitere Aktion erforderlich.  
+   - Falls er **nicht läuft**, gehe wie folgt vor:  
+     1. Doppelklicke auf **OpenSSH Authentication Agent**, um die **Eigenschaften** zu öffnen.  
+     2. Klicke auf **Starten**, um den Dienst zu aktivieren.  
+
+#### **3. Automatischen Start aktivieren (optional)**  
+Damit der Dienst bei jedem Systemstart automatisch gestartet wird:  
+1. Im gleichen Eigenschaften-Fenster findest du den Eintrag **Starttyp**.  
+2. Wähle **Automatisch** aus der Dropdown-Liste.  
+3. Klicke auf **Übernehmen** und dann auf **OK**.  
+
+Nun läuft der **ssh-agent** dauerhaft im Hintergrund und steht für SSH-Authentifizierungen bereit.  
+
+
+### **1.2. SSH-Agent aktivieren & starten**
+
+Falls der SSH-Agent **gestoppt oder deaktiviert** ist:
+
+1. Klicke mit der **rechten Maustaste** auf **ssh-agent**.
+2. Wähle **Starten**, um den Dienst zu starten.
+3. Falls der Dienst nach einem Neustart nicht automatisch startet:
+   - Klicke mit der rechten Maustaste auf **ssh-agent**.
+   - Wähle **Eigenschaften**.
+   - Setze den **Starttyp** auf **Automatisch**.
+   - Klicke auf **Übernehmen** und dann auf **OK**.
+
+🔹 **Testen, ob der SSH-Agent läuft:**
+
+Wechsle zurück zum Reiter **Dienste** und überprüfe, ob der **Status nun "Wird ausgeführt"** lautet.
+
+---
+
+## **2️ SSH-Agent in KeePassXC aktivieren**
+
+Damit KeePassXC SSH-Schlüssel verwalten und automatisch an den SSH-Agent übergeben kann, muss die **SSH-Agent-Integration** aktiviert werden.
+
+### **2.1. SSH-Agent-Integration in KeePassXC aktivieren**
+
+1. **KeePassXC öffnen**.
+2. Gehe zu  **Einstellungen**.
+3. Navigiere zum Tab **SSH-Agent**.
+4. Aktiviere **"SSH-Agent-Integration aktivieren"**.
+5. Stelle sicher, dass **"OpenSSH für Windows verwenden"** aktiviert ist.
+6. Klicke auf **OK**, um die Einstellungen zu speichern.
+
+---
+
+## **3 Korrekte SSH-Agent-Socket setzen**
+
+Unter Windows muss die **richtige SSH-Agent-Socket (`SSH_AUTH_SOCK`) manuell gesetzt werden.
+
+### **3.1. Richtige SSH-Socket setzen**
+
+Öffne **PowerShell (nicht als Admin!)** und setze die **richtige Socket**:
+
+```powershell
+$env:SSH_AUTH_SOCK = "\\.\pipe\openssh-ssh-agent"
+```
+
+### **3.2. Diese Einstellung dauerhaft speichern**
+
+## `$env:SSH_AUTH_SOCK` nach Neustart beibehalten
+
+Damit die Umgebungsvariable `$env:SSH_AUTH_SOCK` auch nach einem Neustart bestehen bleibt, kannst du sie entweder in dein PowerShell-Profil oder als System-Umgebungsvariable hinzufügen.
+
+---
+
+### **In das PowerShell-Profil einfügen (Benutzerspezifisch)**
+
+Diese Methode sorgt dafür, dass die Variable bei jedem Start von PowerShell automatisch gesetzt wird.
+
+1. **PowerShell öffnen** und überprüfen, ob das Profil existiert:
+
+   ```powershell
+   if (!(Test-Path $PROFILE)) { New-Item -ItemType File -Path $PROFILE -Force }
+   ```
+
+2. **Profil-Datei im Editor öffnen:**
+
+   ```powershell
+   notepad $PROFILE
+   ```
+
+3. **Folgende Zeile am Ende der Datei hinzufügen:**
+
+   ```powershell
+   $env:SSH_AUTH_SOCK = "\\.\pipe\openssh-ssh-agent"
+   ```
+
+4. **Datei speichern und Notepad schließen.**
+
+(Schließe zuerst den Tab in Notepad damit sich dieser nicht wieder öffnet beim nächsten Starten von Notepad!)
+Jetzt wird die Umgebungsvariable bei jedem Start von PowerShell automatisch gesetzt.
+
+---
+
+## **3.3🔹 Testen, ob der SSH-Agent funktioniert:**
+
+Starte KeepassXC neu: **Datenbank > Beenden** (oder **Strg + Q**).\
+**Öffne und Entsperre** die Datenbank in welcher der SSH-Key gespeichert ist erneut.\
+Nun überprüfe ob der SSH-Key dem ssh-agent zurverfügung steht. Tippe dafür in Powershell folgendes ein:
+
+```powershell
+ssh-add -l
+```
+
+## **4 Verbindung zu DietPi via SSH herstellen**
+
+Nachdem der SSH-Agent läuft und der Schlüssel geladen ist, kann die Verbindung zu **DietPi** hergestellt werden.
+
+🔹 **Verbindung testen:**
+
+```powershell
+ssh dietpi@10.5.0.115
+```
+
+Falls die Verbindung nicht funktioniert, führe sie mit **mehr Debug-Informationen** aus:
+
+```powershell
+ssh -vvv dietpi@10.5.0.115
+```
+

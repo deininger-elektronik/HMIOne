@@ -1,0 +1,47 @@
+# After Node RED Deployment is up:
+
+
+# set ufw to block ssh  port
+# set dropbear to be uninstalled
+# check if ssh presist
+
+# set file system to read only
+
+
+### **Next Steps After Enabling Read-Only Mode**
+If you're also planning to **block SSH and remove OpenSSH/Dropbear**, follow these additional steps:
+
+1. **Deny SSH in UFW (without reloading yet)**:
+   ```sh
+   sudo ufw deny 22/tcp
+   ```
+
+2. **Schedule UFW to Reload on Next Boot**:
+   ```sh
+   echo "sudo ufw reload" | sudo tee -a /etc/rc.local
+   sudo chmod +x /etc/rc.local
+   ```
+
+3. **Schedule OpenSSH & Dropbear Uninstallation**:
+   ```sh
+   echo "sudo dietpi-software uninstall 105" | sudo tee -a /etc/rc.local  # OpenSSH
+   echo "sudo dietpi-software uninstall 104" | sudo tee -a /etc/rc.local  # Dropbear
+   ```
+---
+
+### **How to Enable Read-Only Mode in DietPi via Command Line**
+
+```sh
+sudo dietpi-drive_manager 2>/dev/null <<EOF
+6
+1
+EOF
+```
+
+
+4. **Reboot to Apply All Changes**:
+   ```sh
+   sudo reboot
+   ```
+
+---
