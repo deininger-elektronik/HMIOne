@@ -1,0 +1,4222 @@
+[
+    {
+        "id": "6b2971d3359ff7c2",
+        "type": "tab",
+        "label": "VM_Dash_ExternalToken",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cbd30218b8d8aa81",
+        "type": "tab",
+        "label": "ui control",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e391987ca15050dc",
+        "type": "tab",
+        "label": "PTZ Menu",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "db9e28e670678844",
+        "type": "tab",
+        "label": "Login",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9c610708c3ade76c",
+        "type": "subflow",
+        "name": "GetCameras",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "069ec700565a1336"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1080,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "c8eb686a4fc8d502",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "53a89aef85efe282",
+        "type": "subflow",
+        "name": "PTZ Joystick",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "92482728baf99941"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 520,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "d39190760748fa62",
+                        "port": 0
+                    },
+                    {
+                        "id": "92482728baf99941",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "056b35bf73ad55ce",
+        "type": "subflow",
+        "name": "Snaphsot",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 80,
+                "y": 440,
+                "wires": [
+                    {
+                        "id": "fb23024c101de19c"
+                    },
+                    {
+                        "id": "866a2a916892b42e"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1580,
+                "y": 520,
+                "wires": [
+                    {
+                        "id": "6dbcacb63ae9a355",
+                        "port": 0
+                    },
+                    {
+                        "id": "59231325580df49d",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "d934ac920f62644a",
+        "type": "tls-config",
+        "name": "REST API (IT-PC)",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "",
+        "verifyservercert": false,
+        "alpnprotocol": ""
+    },
+    {
+        "id": "5dbefc4db9159777",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "10.5.0.103",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "046d86d52980a9f9",
+        "type": "ui-base",
+        "name": "Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "none",
+        "navigationStyle": "none",
+        "titleBarStyle": "hidden",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true
+    },
+    {
+        "id": "a00ab967fa5fb6d4",
+        "type": "ui-theme",
+        "name": "DashTheme",
+        "colors": {
+            "surface": "#1e1e1e",
+            "primary": "#0b00ce",
+            "bgPage": "#1e1e1e",
+            "groupBg": "#1e1e1e",
+            "groupOutline": "#1e1e1e"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "1px",
+            "groupGap": "1px",
+            "groupBorderRadius": "1px",
+            "widgetGap": "1px"
+        }
+    },
+    {
+        "id": "e58ee56288cb987f",
+        "type": "ui-page",
+        "name": "Login",
+        "ui": "046d86d52980a9f9",
+        "path": "",
+        "icon": "key-arrow-right",
+        "layout": "grid",
+        "theme": "a00ab967fa5fb6d4",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 3,
+        "className": "",
+        "visible": "false",
+        "disabled": "true"
+    },
+    {
+        "id": "ca4114309ebf5793",
+        "type": "ui-group",
+        "name": "Keypad",
+        "page": "e58ee56288cb987f",
+        "width": "3",
+        "height": "5",
+        "order": 2,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "76218eb6bbaf8699",
+        "type": "ui-page",
+        "name": "E1",
+        "ui": "046d86d52980a9f9",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "a00ab967fa5fb6d4",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "398749ec0a744b1f",
+        "type": "ui-group",
+        "name": "Group 2",
+        "page": "76218eb6bbaf8699",
+        "width": "3",
+        "height": "1",
+        "order": 2,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "cd82def3d884eb85",
+        "type": "ui-group",
+        "name": "Snapshot",
+        "page": "94e8b918842ddadd",
+        "width": "5",
+        "height": "1",
+        "order": 1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "b7aebf2c9be0cdc5",
+        "type": "ui-group",
+        "name": "Group 3",
+        "page": "76218eb6bbaf8699",
+        "width": "3",
+        "height": 1,
+        "order": 3,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "39b1cd4bd186b215",
+        "type": "ui-group",
+        "name": "Group 5",
+        "page": "76218eb6bbaf8699",
+        "width": "3",
+        "height": 1,
+        "order": 5,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "9f6d982271ada0c6",
+        "type": "ui-group",
+        "name": "Group 6",
+        "page": "76218eb6bbaf8699",
+        "width": "3",
+        "height": 1,
+        "order": 6,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "51eda181ec65d03d",
+        "type": "ui-group",
+        "name": "Group 4",
+        "page": "76218eb6bbaf8699",
+        "width": "3",
+        "height": 1,
+        "order": 4,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "53eceb07a060256d",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "/dev/ttyUSB0",
+        "serialbaud": "9600",
+        "databits": 8,
+        "parity": "even",
+        "stopbits": 1,
+        "waitfor": "",
+        "dtr": "high",
+        "rts": "high",
+        "cts": "low",
+        "dsr": "low",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": 10000
+    },
+    {
+        "id": "94e8b918842ddadd",
+        "type": "ui-page",
+        "name": "PTZ",
+        "ui": "046d86d52980a9f9",
+        "path": "/PTZ",
+        "icon": "gamepad-circle",
+        "layout": "grid",
+        "theme": "a00ab967fa5fb6d4",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 2,
+        "className": "",
+        "visible": true,
+        "disabled": false
+    },
+    {
+        "id": "d9b8c8ecaafedbfd",
+        "type": "ui-group",
+        "name": "Presets",
+        "page": "94e8b918842ddadd",
+        "width": "2",
+        "height": 1,
+        "order": 2,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "a2c671cbe65fb2e0",
+        "type": "ui-group",
+        "name": "Nav",
+        "page": "94e8b918842ddadd",
+        "width": "5",
+        "height": "2",
+        "order": 4,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "c653636e5d87b75c",
+        "type": "ui-group",
+        "name": "Spacer",
+        "page": "e58ee56288cb987f",
+        "width": "3",
+        "height": 1,
+        "order": 1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "e9a5dee9d5441b31",
+        "type": "ui-group",
+        "name": "Regeln",
+        "page": "94e8b918842ddadd",
+        "width": "2",
+        "height": 1,
+        "order": 3,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "ef078dcedac2022e",
+        "type": "ui-group",
+        "name": "G1b",
+        "page": "76218eb6bbaf8699",
+        "width": "3",
+        "height": 1,
+        "order": 1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "069ec700565a1336",
+        "type": "function",
+        "z": "9c610708c3ade76c",
+        "name": "ListCameras",
+        "func": "// Ensure msg.payload and msg.payload.NVR exist\nif (msg.payload && msg.payload.NVR && msg.payload.NVR.session) {\n    const session = msg.payload.NVR.session;\n\n    // Set the headers\n    msg.headers = {\n        \"Accept\": \"application/json\"\n    };\n\n    // Construct the URL with the dynamic session value\n    msg.url = `https://10.5.1.175:8443/mt/api/rest/v1/cameras?session=${session}&verbosity=LOW`;\n\n    return msg;\n} else {\n    node.error(\"Session information is missing in msg.payload.NVR.session\");\n    return null;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "a2289bb43fb2398d",
+                "4b84c23f5f8d099d"
+            ]
+        ]
+    },
+    {
+        "id": "a2289bb43fb2398d",
+        "type": "http request",
+        "z": "9c610708c3ade76c",
+        "name": "GET",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "d934ac920f62644a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "5f407459e30584d7"
+            ]
+        ]
+    },
+    {
+        "id": "c8eb686a4fc8d502",
+        "type": "function",
+        "z": "9c610708c3ade76c",
+        "name": "ListCameraPostprocessing",
+        "func": "// Get the cameras from the NVR\nconst cameras = msg.payload?.result?.cameras || [];\n\nconst filteredCameras = cameras.map(camera => ({\n    id: camera.id,\n    name: camera.name,\n    logicalId: camera.logicalId,\n}));\n\n// Sort filtered cameras by logical ID\nfilteredCameras.sort((a, b) => a.logicalId - b.logicalId);\n\n// Shift all entries to the right by 1 index to leave index 0 empty\nfilteredCameras.unshift({});\n\n// Ensure msg.payload and msg.payload.NVR exist\nmsg.payload = msg.payload || {};\nmsg.payload.NVR = msg.payload.NVR || {};\n\n// Update only the cameras field in msg.payload.NVR without affecting other fields\nmsg.payload.NVR = {\n    ...msg.payload.NVR, // Copy all existing fields in NVR\n    cameras: filteredCameras // Overwrite only the cameras field\n};\n\n// Clean up the result object\ndelete msg.payload.result;\ndelete msg.payload.status;\ndelete msg.headers;\ndelete msg.url;\ndelete msg.statusCode;\ndelete msg.responseUrl;\ndelete msg.redirectList;\ndelete msg.retry;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4b84c23f5f8d099d",
+        "type": "join",
+        "z": "9c610708c3ade76c",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "payload",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 690,
+        "y": 120,
+        "wires": [
+            [
+                "c8eb686a4fc8d502"
+            ]
+        ]
+    },
+    {
+        "id": "5f407459e30584d7",
+        "type": "function",
+        "z": "9c610708c3ade76c",
+        "name": "msg.complete",
+        "func": "// Add the \"complete\" property to the message\nmsg.complete = true; // You can set this to any value you'd like\n\n// Return the modified message object\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "4b84c23f5f8d099d"
+            ]
+        ]
+    },
+    {
+        "id": "92482728baf99941",
+        "type": "function",
+        "z": "53a89aef85efe282",
+        "name": "PTZ",
+        "func": "// Check if the session exists in msg.payload.NVR.session\nif (msg.payload && msg.payload.NVR && msg.payload.NVR.session) {\n    const session = msg.payload.NVR.session;\n    \n    // Get the camera ID directly from ThisCamera object\n    if (msg.payload.NVR.ThisCamera && msg.payload.NVR.ThisCamera.id) {\n        const CameraId = msg.payload.NVR.ThisCamera.id;\n        \n        // Check if Joystick data exists\n        if (msg.payload.Joystick) {\n            // Get the joystick values for pan, tilt, and zoom\n            // Default to 0 if values are not present\n            const panAmount = msg.payload.Joystick.X !== undefined ? msg.payload.Joystick.X : 0;\n            const tiltAmount = msg.payload.Joystick.Y !== undefined ? msg.payload.Joystick.Y : 0;\n            const zoomAmount = msg.payload.Joystick.Z !== undefined ? msg.payload.Joystick.Z : 0;\n            \n            // Get action directly from msg.payload.Joystick.action\n            // If action is not present, determine it based on joystick values\n            const action = msg.payload.Joystick.action !== undefined ? \n                msg.payload.Joystick.action : \n                ((panAmount === 0 && tiltAmount === 0 && zoomAmount === 0) ? \"STOP\" : \"MOVE\");\n\n            // Set the headers\n            msg.headers = {\n                \"Content-Type\": \"application/json\",\n                \"Accept\": \"application/json\"\n            };\n\n            // Construct the payload\n            msg.payload = {\n                \"session\": session,  \n                \"id\": CameraId,\n                \"continuous\": {\n                    \"panAmount\": panAmount,\n                    \"tiltAmount\": tiltAmount,\n                    \"zoomAmount\": zoomAmount,\n                    \"action\": action\n                }\n            };\n            // Set the URL for the PUT request\n            msg.url = \"https://10.5.1.175:8443/mt/api/rest/v1/camera/commands/pan-tilt-zoom\";\n            return msg;\n        } else {\n            node.error(\"Joystick information is missing in the input message\");\n            return null;\n        }\n    } else {\n        node.error(\"Camera ID is missing in msg.payload.NVR.ThisCamera\");\n        return null;\n    }\n} else {\n    node.error(\"Session information is missing in msg.payload.NVR.session\");\n    return null;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 190,
+        "y": 120,
+        "wires": [
+            [
+                "d39190760748fa62",
+                "19058f47d3bc0968"
+            ]
+        ]
+    },
+    {
+        "id": "d39190760748fa62",
+        "type": "http request",
+        "z": "53a89aef85efe282",
+        "name": "PUT",
+        "method": "PUT",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "d934ac920f62644a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 370,
+        "y": 60,
+        "wires": [
+            [
+                "1dd89a91e7aab57e"
+            ]
+        ]
+    },
+    {
+        "id": "19058f47d3bc0968",
+        "type": "debug",
+        "z": "53a89aef85efe282",
+        "d": true,
+        "name": "payload.continuous",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload.continuous",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1dd89a91e7aab57e",
+        "type": "debug",
+        "z": "53a89aef85efe282",
+        "d": true,
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "fb23024c101de19c",
+        "type": "function",
+        "z": "056b35bf73ad55ce",
+        "name": "Snapshot",
+        "func": "// Check if camera is offline first\nif (msg.payload?.NVR?.ThisCamera?.alt?.offline === true) {\n    // If camera is offline, return original message unchanged\n    return msg;\n}\n\n// Otherwise, check if session exists and proceed\nif (msg.payload?.NVR?.session) {\n    const session = msg.payload.NVR.session;\n\n    if (msg.payload?.NVR?.ThisCamera?.id) {\n        const CameraId = msg.payload.NVR.ThisCamera.id;\t\n        \n        // Set the headers\n        msg.headers = { \"Accept\": \"image/jpeg\" };\n\n        // Construct the URL with dynamic session and cameraId\n        msg.url = `https://10.5.1.175:8443/mt/api/rest/v1/media?session=${session}&cameraId=${CameraId}&format=jpeg&frames=all&media=video&quality=high&t=live`;\n\n        return msg;\n    } else {\n        node.error(\"Camera information is missing in the input message\");\n        return null;\n    }\n} else {\n    node.error(\"Session information is missing in msg.payload.NVR.session\");\n    return null;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 200,
+        "y": 440,
+        "wires": [
+            [
+                "511c8552ee69957a",
+                "59231325580df49d",
+                "0697e3efd87a8b96"
+            ]
+        ]
+    },
+    {
+        "id": "96555a0475b01023",
+        "type": "http request",
+        "z": "056b35bf73ad55ce",
+        "name": "GET",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "d934ac920f62644a",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 590,
+        "y": 400,
+        "wires": [
+            [
+                "9fcc9c4dcfd1b401"
+            ]
+        ]
+    },
+    {
+        "id": "9fcc9c4dcfd1b401",
+        "type": "function",
+        "z": "056b35bf73ad55ce",
+        "name": "convert to jpeg",
+        "func": "// Convert binary buffer to jpeg and return only msg.payload.snapshot\nif (Buffer.isBuffer(msg.payload)) {\n    return { payload: { snapshot: `data:image/jpeg;base64,${msg.payload.toString('base64')}` } } ;\n} else {\n    node.error(\"Payload is not a buffer\");\n    return null;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 400,
+        "wires": [
+            [
+                "b91208b6d83ec02c"
+            ]
+        ]
+    },
+    {
+        "id": "b91208b6d83ec02c",
+        "type": "function",
+        "z": "056b35bf73ad55ce",
+        "name": "msg.complete",
+        "func": "// Add the \"complete\" property to the message\nmsg.complete = true; // You can set this to any value you'd like\n\n// Return the modified message object\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1000,
+        "y": 400,
+        "wires": [
+            [
+                "8f1c12516bfd4510"
+            ]
+        ]
+    },
+    {
+        "id": "8f1c12516bfd4510",
+        "type": "join",
+        "z": "056b35bf73ad55ce",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "payload",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": true,
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1190,
+        "y": 440,
+        "wires": [
+            [
+                "6dbcacb63ae9a355"
+            ]
+        ]
+    },
+    {
+        "id": "f620988942bb063a",
+        "type": "function",
+        "z": "056b35bf73ad55ce",
+        "name": "only pass msg.payload.NVR",
+        "func": "// Ensure msg.payload and msg.payload.NVR exist before proceeding\nif (msg.payload && msg.payload.NVR !== undefined) {\n    return { payload: { NVR: msg.payload.NVR } };\n}\n\n// If msg.payload.NVR is not found, return null to drop the message\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 440,
+        "wires": [
+            [
+                "8f1c12516bfd4510"
+            ]
+        ]
+    },
+    {
+        "id": "6dbcacb63ae9a355",
+        "type": "change",
+        "z": "056b35bf73ad55ce",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.snapshot",
+                "pt": "msg",
+                "to": "payload.NVR.ThisCamera.snapshot",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1400,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "511c8552ee69957a",
+        "type": "function",
+        "z": "056b35bf73ad55ce",
+        "name": "IF API Camera",
+        "func": "// Check if the path exists and the value is exactly 'false'\nif (msg.payload && \n    msg.payload.NVR && \n    msg.payload.NVR.ThisCamera && \n    msg.payload.NVR.ThisCamera.alt &&\n    msg.payload.NVR.ThisCamera.alt.hasOwnProperty('offline') &&\n    msg.payload.NVR.ThisCamera.alt.offline === false) {\n    \n    // Condition met: return the original message\n    return msg;\n}\n\n// If we reach here, either the path doesn't exist\n// or the value isn't false, so return nothing\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 440,
+        "wires": [
+            [
+                "f620988942bb063a",
+                "96555a0475b01023",
+                "e6700f70f3e5bd8b"
+            ]
+        ]
+    },
+    {
+        "id": "59231325580df49d",
+        "type": "function",
+        "z": "056b35bf73ad55ce",
+        "name": "IF NOT API Camer",
+        "func": "// Check if the path exists and the value is exactly 'false'\nif (msg.payload &&\n    msg.payload.NVR &&\n    msg.payload.NVR.ThisCamera &&\n    msg.payload.NVR.ThisCamera.alt &&\n    msg.payload.NVR.ThisCamera.alt.hasOwnProperty('offline') &&\n    msg.payload.NVR.ThisCamera.alt.offline === true) {\n\n    // Condition met: return the original message\n    return msg;\n}\n\n// If we reach here, either the path doesn't exist\n// or the value isn't false, so return nothing\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "866a2a916892b42e",
+        "type": "debug",
+        "z": "056b35bf73ad55ce",
+        "d": true,
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 240,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "0697e3efd87a8b96",
+        "type": "debug",
+        "z": "056b35bf73ad55ce",
+        "d": true,
+        "name": "msg",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "e6700f70f3e5bd8b",
+        "type": "debug",
+        "z": "056b35bf73ad55ce",
+        "d": true,
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "10939c318717d5c9",
+        "type": "inject",
+        "z": "056b35bf73ad55ce",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "{\"NVR\":{\"session\":\"TestSession\",\"ThisCamera\":{\"id\":\"4xIx1DOwMDAwMrZMTrEwTtFLTsw1MBASOHx4_1rb0z7PpniqeLbXBUYCAA\",\"name\":\"K5 Mast\",\"logicalId\":106,\"Monitor\":1,\"altCameraName\":\"Kamera 106\",\"altLogicalid\":106,\"PTZMenu\":true}}}",
+        "payloadType": "json",
+        "x": 110,
+        "y": 640,
+        "wires": [
+            [
+                "fb23024c101de19c"
+            ]
+        ]
+    },
+    {
+        "id": "406a1f2d44c3ecf7",
+        "type": "function",
+        "z": "6b2971d3359ff7c2",
+        "name": "105",
+        "func": "// Define the default values at the beginning\nconst Monitor = 1;\nconst altCameraName = \"Kamera 105\";\nconst OpenPTZMenu = true;\nconst camera = 105;\n\n// Initialize msg if it doesn't exist\nmsg = msg || {};\n// Initialize payload if it doesn't exist\nmsg.payload = msg.payload || {};\n// Initialize NVR if it doesn't exist\nmsg.payload.NVR = msg.payload.NVR || {};\n// Initialize ThisCamera if it doesn't exist\nmsg.payload.NVR.ThisCamera = msg.payload.NVR.ThisCamera || {};\n// Initialize alt object if it doesn't exist\nmsg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n\n// If cameras array exists, try to find the requested camera\nif (Array.isArray(msg.payload.NVR.cameras)) {\n    // Find the camera object with a matching logicalId\n    const foundCamera = msg.payload.NVR.cameras.find(cam => cam.logicalId === camera);\n\n    if (foundCamera) {\n        // Copy all properties from the found camera to ThisCamera\n        Object.assign(msg.payload.NVR.ThisCamera, foundCamera);\n        \n        // Re-ensure alt object exists after assignment (it might get overwritten)\n        msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n        msg.payload.NVR.ThisCamera.alt.offline = false;\n    } else {\n        // No matching camera found in the array\n        msg.payload.NVR.ThisCamera.alt.offline = true;\n    }\n    // Remove cameras array from the output\n    delete msg.payload.NVR.cameras;\n} else {\n    // No cameras array found or msg was empty\n    msg.payload.NVR.ThisCamera.alt.offline = true;\n}\n\n// Always set these values, regardless of whether we found a camera or received an empty message\nmsg.payload.NVR.ThisCamera.Monitor = Monitor;\nmsg.payload.NVR.ThisCamera.alt.CameraName = altCameraName;\nmsg.payload.NVR.ThisCamera.alt.Logicalid = camera;\nmsg.payload.NVR.ThisCamera.PTZMenu = OpenPTZMenu;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 260,
+        "wires": [
+            [
+                "6025e22995429161"
+            ]
+        ]
+    },
+    {
+        "id": "6025e22995429161",
+        "type": "subflow:056b35bf73ad55ce",
+        "z": "6b2971d3359ff7c2",
+        "name": "Snapshot",
+        "x": 840,
+        "y": 260,
+        "wires": [
+            [
+                "ec7a177512923e91",
+                "658bb5d78fd1884d",
+                "b2b39c669903f198"
+            ]
+        ]
+    },
+    {
+        "id": "b9c5b04c719121e8",
+        "type": "function",
+        "z": "6b2971d3359ff7c2",
+        "name": "7",
+        "func": "// Define the variables at the beginning\nlet Monitor = 1;\nlet altCameraName = \"Kamera 7\";\nlet OpenPTZMenu = true;\n\nconst camera = 7;\n\n// Ensure msg.payload and msg.payload.NVR exist\nif (msg.payload && msg.payload.NVR) {\n    // Ensure ThisCamera exists and initialize it with an alt object\n    msg.payload.NVR.ThisCamera = msg.payload.NVR.ThisCamera || {};\n    // Ensure the alt object exists\n    msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n\n    // Check if cameras array exists in msg.payload.NVR\n    if (Array.isArray(msg.payload.NVR.cameras)) {\n        // Find the camera object with a matching logicalId\n        const foundCamera = msg.payload.NVR.cameras.find(cam => cam.logicalId === camera);\n\n        if (foundCamera) {\n            // Copy all properties from the found camera to ThisCamera\n            Object.assign(msg.payload.NVR.ThisCamera, foundCamera);\n            \n            // Ensure alt object exists after assignment\n            msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n            msg.payload.NVR.ThisCamera.alt.offline = false;\n        } else {\n            // node.warn(`No camera found with logicalId ${camera}`);\n            msg.payload.NVR.ThisCamera.alt.offline = true;\n        }\n        // Remove cameras array from the output\n        delete msg.payload.NVR.cameras;\n    } else {\n        // node.warn(\"No cameras array found in msg.payload.NVR\");\n        msg.payload.NVR.ThisCamera.alt.offline = true;\n    }\n    \n    // Assign the variables to the output message\n    msg.payload.NVR.ThisCamera.Monitor = Monitor;\n    msg.payload.NVR.ThisCamera.alt.CameraName = altCameraName;\n    msg.payload.NVR.ThisCamera.alt.Logicalid = camera;\n    msg.payload.NVR.ThisCamera.PTZMenu = OpenPTZMenu;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 340,
+        "wires": [
+            [
+                "f33a38307f2bd599"
+            ]
+        ]
+    },
+    {
+        "id": "f33a38307f2bd599",
+        "type": "subflow:056b35bf73ad55ce",
+        "z": "6b2971d3359ff7c2",
+        "name": "Snapshot",
+        "x": 840,
+        "y": 340,
+        "wires": [
+            [
+                "ec7a177512923e91",
+                "c1d4c0849b778920"
+            ]
+        ]
+    },
+    {
+        "id": "6e049676a6b599a0",
+        "type": "inject",
+        "z": "6b2971d3359ff7c2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 220,
+        "wires": [
+            [
+                "d97a0b99b0ceeec5"
+            ]
+        ]
+    },
+    {
+        "id": "d97a0b99b0ceeec5",
+        "type": "function",
+        "z": "6b2971d3359ff7c2",
+        "name": "scope",
+        "func": "// Get the authorization session from the flow context\nconst session = flow.get('authorizationsession');\n\n// Check if the session exists\nif (session) {\n    // Ensure msg.payload exists\n    msg.payload = msg.payload || {};\n\n    // Ensure msg.payload.NVR exists\n    msg.payload.NVR = msg.payload.NVR || {};\n\n    // Set the session in msg.payload.NVR.session\n    msg.payload.NVR.session = session;\n\n    return msg;\n} else {\n    // Log an error and stop the flow if the session is missing\n    node.error(\"Authorization session is missing in the flow context\");\n    return null;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 220,
+        "wires": [
+            [
+                "0cd68c9ef7883ea8"
+            ]
+        ]
+    },
+    {
+        "id": "dd733aaa19e986ec",
+        "type": "comment",
+        "z": "6b2971d3359ff7c2",
+        "name": "Snapshot Interval",
+        "info": "",
+        "x": 100,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "abfecb6b7b7ab72e",
+        "type": "subflow:056b35bf73ad55ce",
+        "z": "6b2971d3359ff7c2",
+        "name": "Snapshot",
+        "x": 840,
+        "y": 300,
+        "wires": [
+            [
+                "ec7a177512923e91",
+                "67c4428045d9c9cd",
+                "75df3adea7a6f4c1"
+            ]
+        ]
+    },
+    {
+        "id": "555bcbb5b8f62f36",
+        "type": "function",
+        "z": "6b2971d3359ff7c2",
+        "name": "3",
+        "func": "// Define the default values at the beginning\nconst Monitor = 1;\nconst altCameraName = \"Kamera 3\";\nconst OpenPTZMenu = true;\nconst camera = 3;\n\n// Initialize msg if it doesn't exist\nmsg = msg || {};\n// Initialize payload if it doesn't exist\nmsg.payload = msg.payload || {};\n// Initialize NVR if it doesn't exist\nmsg.payload.NVR = msg.payload.NVR || {};\n// Initialize ThisCamera if it doesn't exist\nmsg.payload.NVR.ThisCamera = msg.payload.NVR.ThisCamera || {};\n// Initialize alt object if it doesn't exist\nmsg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n\n// If cameras array exists, try to find the requested camera\nif (Array.isArray(msg.payload.NVR.cameras)) {\n    // Find the camera object with a matching logicalId\n    const foundCamera = msg.payload.NVR.cameras.find(cam => cam.logicalId === camera);\n\n    if (foundCamera) {\n        // Copy all properties from the found camera to ThisCamera\n        Object.assign(msg.payload.NVR.ThisCamera, foundCamera);\n        \n        // Re-ensure alt object exists after assignment (it might get overwritten)\n        msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n        msg.payload.NVR.ThisCamera.alt.offline = false;\n    } else {\n        // No matching camera found in the array\n        msg.payload.NVR.ThisCamera.alt.offline = true;\n    }\n    // Remove cameras array from the output\n    delete msg.payload.NVR.cameras;\n} else {\n    // No cameras array found or msg was empty\n    msg.payload.NVR.ThisCamera.alt.offline = true;\n}\n\n// Always set these values, regardless of whether we found a camera or received an empty message\nmsg.payload.NVR.ThisCamera.Monitor = Monitor;\nmsg.payload.NVR.ThisCamera.alt.CameraName = altCameraName;\nmsg.payload.NVR.ThisCamera.alt.Logicalid = camera;\nmsg.payload.NVR.ThisCamera.PTZMenu = OpenPTZMenu;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 300,
+        "wires": [
+            [
+                "abfecb6b7b7ab72e",
+                "ab3b6a4b07672139"
+            ]
+        ]
+    },
+    {
+        "id": "2a619c9221cdb307",
+        "type": "function",
+        "z": "6b2971d3359ff7c2",
+        "name": "103",
+        "func": "// Define the variables at the beginning\nlet Monitor = 1;\nlet altCameraName = \"Kamera 103\";\nlet OpenPTZMenu = true;\n\nconst camera = 103;\n\n// Ensure msg.payload and msg.payload.NVR exist\nif (msg.payload && msg.payload.NVR) {\n    // Ensure ThisCamera exists and initialize it with an alt object\n    msg.payload.NVR.ThisCamera = msg.payload.NVR.ThisCamera || {};\n    // Ensure the alt object exists\n    msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n\n    // Check if cameras array exists in msg.payload.NVR\n    if (Array.isArray(msg.payload.NVR.cameras)) {\n        // Find the camera object with a matching logicalId\n        const foundCamera = msg.payload.NVR.cameras.find(cam => cam.logicalId === camera);\n\n        if (foundCamera) {\n            // Copy all properties from the found camera to ThisCamera\n            Object.assign(msg.payload.NVR.ThisCamera, foundCamera);\n            \n            // Ensure alt object exists after assignment\n            msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n            msg.payload.NVR.ThisCamera.alt.offline = false;\n        } else {\n            // node.warn(`No camera found with logicalId ${camera}`);\n            msg.payload.NVR.ThisCamera.alt.offline = true;\n        }\n        // Remove cameras array from the output\n        delete msg.payload.NVR.cameras;\n    } else {\n        // node.warn(\"No cameras array found in msg.payload.NVR\");\n        msg.payload.NVR.ThisCamera.alt.offline = true;\n    }\n    \n    // Assign the variables to the output message\n    msg.payload.NVR.ThisCamera.Monitor = Monitor;\n    msg.payload.NVR.ThisCamera.alt.CameraName = altCameraName;\n    msg.payload.NVR.ThisCamera.alt.Logicalid = camera;\n    msg.payload.NVR.ThisCamera.PTZMenu = OpenPTZMenu;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 380,
+        "wires": [
+            [
+                "a5a46959584b8960"
+            ]
+        ]
+    },
+    {
+        "id": "a5a46959584b8960",
+        "type": "subflow:056b35bf73ad55ce",
+        "z": "6b2971d3359ff7c2",
+        "name": "Snapshot",
+        "x": 840,
+        "y": 380,
+        "wires": [
+            [
+                "ec7a177512923e91",
+                "7e89ddc405d1c463"
+            ]
+        ]
+    },
+    {
+        "id": "a2c2627e8b6ed6e7",
+        "type": "function",
+        "z": "6b2971d3359ff7c2",
+        "name": "5",
+        "func": "// Define the variables at the beginning\nlet Monitor = 1;\nlet altCameraName = \"Kamera 5\";\nlet OpenPTZMenu = true;\n\nconst camera = 5;\n\n// Ensure msg.payload and msg.payload.NVR exist\nif (msg.payload && msg.payload.NVR) {\n    // Ensure ThisCamera exists and initialize it with an alt object\n    msg.payload.NVR.ThisCamera = msg.payload.NVR.ThisCamera || {};\n    // Ensure the alt object exists\n    msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n\n    // Check if cameras array exists in msg.payload.NVR\n    if (Array.isArray(msg.payload.NVR.cameras)) {\n        // Find the camera object with a matching logicalId\n        const foundCamera = msg.payload.NVR.cameras.find(cam => cam.logicalId === camera);\n\n        if (foundCamera) {\n            // Copy all properties from the found camera to ThisCamera\n            Object.assign(msg.payload.NVR.ThisCamera, foundCamera);\n            \n            // Ensure alt object exists after assignment\n            msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n            msg.payload.NVR.ThisCamera.alt.offline = false;\n        } else {\n            // node.warn(`No camera found with logicalId ${camera}`);\n            msg.payload.NVR.ThisCamera.alt.offline = true;\n        }\n        // Remove cameras array from the output\n        delete msg.payload.NVR.cameras;\n    } else {\n        // node.warn(\"No cameras array found in msg.payload.NVR\");\n        msg.payload.NVR.ThisCamera.alt.offline = true;\n    }\n    \n    // Assign the variables to the output message\n    msg.payload.NVR.ThisCamera.Monitor = Monitor;\n    msg.payload.NVR.ThisCamera.alt.CameraName = altCameraName;\n    msg.payload.NVR.ThisCamera.alt.Logicalid = camera;\n    msg.payload.NVR.ThisCamera.PTZMenu = OpenPTZMenu;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 420,
+        "wires": [
+            [
+                "cb5104a916c72963"
+            ]
+        ]
+    },
+    {
+        "id": "cb5104a916c72963",
+        "type": "subflow:056b35bf73ad55ce",
+        "z": "6b2971d3359ff7c2",
+        "name": "Snapshot",
+        "x": 840,
+        "y": 420,
+        "wires": [
+            [
+                "ec7a177512923e91",
+                "d4123f6fa253eccb"
+            ]
+        ]
+    },
+    {
+        "id": "ec7a177512923e91",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "name": "cred leak check",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "14af1bc6a73ea09a",
+        "type": "inject",
+        "z": "6b2971d3359ff7c2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 110,
+        "y": 400,
+        "wires": [
+            [
+                "d97a0b99b0ceeec5"
+            ]
+        ]
+    },
+    {
+        "id": "4e032a8d1441db19",
+        "type": "comment",
+        "z": "6b2971d3359ff7c2",
+        "name": "Debuging",
+        "info": "",
+        "x": 100,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "ed172770e192485f",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "name": "debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "6e1e39cd02631881",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "name": "Camera Exists",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "0cd68c9ef7883ea8",
+        "type": "subflow:9c610708c3ade76c",
+        "z": "6b2971d3359ff7c2",
+        "name": "",
+        "x": 370,
+        "y": 220,
+        "wires": [
+            [
+                "406a1f2d44c3ecf7",
+                "555bcbb5b8f62f36",
+                "b9c5b04c719121e8",
+                "2a619c9221cdb307",
+                "a2c2627e8b6ed6e7",
+                "ed172770e192485f",
+                "8aefb676f0c5ba13",
+                "0c2d32300ed53085"
+            ]
+        ]
+    },
+    {
+        "id": "a4d5ae271720a660",
+        "type": "comment",
+        "z": "6b2971d3359ff7c2",
+        "name": "",
+        "info": "dont enumerate over all camerias for the id just do that once and then see if the id chnaged",
+        "x": 300,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "bce9fefd9df1b920",
+        "type": "comment",
+        "z": "6b2971d3359ff7c2",
+        "name": "Use binary data instead of Base64",
+        "info": "If handling multiple Base64-encoded images, consider:\n\n    Use binary data instead of Base64\n        Store images in a file or database, then send only the URL to the UI.\n        Example: Instead of sending msg.payload as Base64, send:\n\n{\n  \"url\": \"http://server/image.jpg\"\n}\n\nThis reduces RAM and CPU usage.",
+        "x": 840,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "adcbc6bd65579013",
+        "type": "comment",
+        "z": "6b2971d3359ff7c2",
+        "name": "",
+        "info": "may be change to get Cameras once and then every 10 minutes and store ids in arry by logical id or in global variable ",
+        "x": 360,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "c7fe920530f1bf17",
+        "type": "mqtt in",
+        "z": "6b2971d3359ff7c2",
+        "name": "",
+        "topic": "session",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "5dbefc4db9159777",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 80,
+        "wires": [
+            [
+                "d63c4004160e94f8",
+                "694346c4e327e988"
+            ]
+        ]
+    },
+    {
+        "id": "d63c4004160e94f8",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "name": "authorizationsession",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "cc3da84a41cc921b",
+        "type": "function",
+        "z": "6b2971d3359ff7c2",
+        "name": "scope",
+        "func": "if (msg.authorizationsession) {\n    // Set the session in the flow context\n    flow.set('authorizationsession', msg.authorizationsession);\n\n    // Optionally log a success message\n    node.log(\"Flow variable 'authorizationsession' successfully updated\");\n\n    return msg;\n} else {\n    // Log an error if msg.authorizationsession is missing\n    node.error(\"Authorization session is missing in the input message\");\n    return null;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e98dc5810c77df05",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "f0c28793bae2d5e8",
+        "type": "inject",
+        "z": "6b2971d3359ff7c2",
+        "name": "authorizationsession",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "authorizationsession",
+        "payloadType": "flow",
+        "x": 250,
+        "y": 120,
+        "wires": [
+            [
+                "e98dc5810c77df05"
+            ]
+        ]
+    },
+    {
+        "id": "694346c4e327e988",
+        "type": "change",
+        "z": "6b2971d3359ff7c2",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "authorizationsession",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 80,
+        "wires": [
+            [
+                "cc3da84a41cc921b"
+            ]
+        ]
+    },
+    {
+        "id": "58212014fc81810b",
+        "type": "comment",
+        "z": "6b2971d3359ff7c2",
+        "name": "run after each other not at once",
+        "info": "",
+        "x": 610,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "5b53de1b77bf51ea",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "name": "AfterSnapshot 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "658bb5d78fd1884d",
+        "type": "ui-template",
+        "z": "6b2971d3359ff7c2",
+        "group": "398749ec0a744b1f",
+        "page": "",
+        "ui": "",
+        "name": "Group 2",
+        "order": 1,
+        "width": "3",
+        "height": "1",
+        "head": "",
+        "format": "<template>\n    <div>\n        <h3 v-if=\"msg.payload\" style=\"font-size: 21px;\">{{ truncatedName }}</h3>\n        <v-img\n            v-if=\"hasValidImage\"\n            :width=\"msg.width || 350\"\n            aspect-ratio=\"msg.aspec || 16/9\"\n            cover\n            :src=\"msg.payload.NVR.ThisCamera.snapshot\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        ></v-img>\n        <div \n            v-else \n            class=\"placeholder-container\"\n            :style=\"{\n                width: (msg && msg.width ? msg.width : 250) + 'px',\n                height: ((msg && msg.width ? msg.width : 250) / (msg && msg.aspec ? msg.aspec : 16/9)) + 'px'\n            }\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        >\n            <div class=\"placeholder-content\">\n                <v-icon\n                    size=\"56\"\n                    color=\"grey darken-2\"\n                >mdi-video</v-icon>\n                <div class=\"placeholder-text\">{{ placeholderText }}</div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\n    export default {\n        computed: {\n            hasValidImage() {\n                return this.msg && this.msg.payload && \n                       this.msg.payload.NVR && \n                       this.msg.payload.NVR.ThisCamera && \n                       this.msg.payload.NVR.ThisCamera.snapshot;\n            },\n            placeholderText() {\n                if (this.msg && this.msg.payload && \n                    this.msg.payload.NVR && \n                    this.msg.payload.NVR.ThisCamera) {\n                    \n                    // First check for alt.CameraName\n                    if (this.msg.payload.NVR.ThisCamera.alt && \n                        this.msg.payload.NVR.ThisCamera.alt.CameraName) {\n                        return this.msg.payload.NVR.ThisCamera.alt.CameraName;\n                    }\n                    // Fall back to the original name property if available\n                    else if (this.msg.payload.NVR.ThisCamera.name) {\n                        return this.msg.payload.NVR.ThisCamera.name;\n                    }\n                    // Finally fall back to the default message\n                    return 'Camera Name not defined';\n                }\n                return 'Camera Name not defined';\n            },\n            truncatedName() {\n                if (!this.msg || !this.msg.payload || !this.msg.payload.NVR || !this.msg.payload.NVR.ThisCamera || !this.msg.payload.NVR.ThisCamera.name) {\n                    return '';\n                }\n                let name = this.msg.payload.NVR.ThisCamera.name;\n                return name.length > 19 ? name.substring(0, 17) + \"...\" : name;\n            },\n            info() {\n                if (!this.msg || !this.msg.payload) {\n                    return '';\n                }\n                if (this.msg.payload.length > 80) {\n                    return this.msg.payload.substring(0, 77) + \"...\";\n                }\n                return this.msg.payload;\n            }\n        },\n        methods: {\n            imageClicked() {\n                if (this.msg && this.msg.payload) {\n                    // Create a deep copy of the original message\n                    let msgCopy = JSON.parse(JSON.stringify(this.msg));\n                    \n                    // Remove the snapshot if it exists\n                    if (msgCopy.payload && msgCopy.payload.NVR && \n                        msgCopy.payload.NVR.ThisCamera) {\n                        delete msgCopy.payload.NVR.ThisCamera.snapshot;\n                    }\n                    \n                    // Send the modified message\n                    this.send(msgCopy);\n                }\n            }\n        }\n    }\n</script>\n\n<style scoped>\n.placeholder-container {\n    background-color: #f5f5f5;\n    border-radius: 4px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n}\n\n.placeholder-content {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 12px;\n}\n\n.placeholder-text {\n    margin-top: 12px;\n    color: #616161;\n    font-size: 16px;\n    font-weight: 500;\n}\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1020,
+        "y": 260,
+        "wires": [
+            [
+                "e40b549ff09b14c9",
+                "7773dbfefe08d01a"
+            ]
+        ]
+    },
+    {
+        "id": "d4123f6fa253eccb",
+        "type": "ui-template",
+        "z": "6b2971d3359ff7c2",
+        "group": "9f6d982271ada0c6",
+        "page": "",
+        "ui": "",
+        "name": "",
+        "order": 1,
+        "width": "3",
+        "height": "1",
+        "head": "",
+        "format": "<template>\n    <div>\n        <h3 v-if=\"msg.payload\" style=\"font-size: 21px;\">{{ truncatedName }}</h3>\n        <v-img\n            v-if=\"hasValidImage\"\n            :width=\"msg.width || 350\"\n            aspect-ratio=\"msg.aspec || 16/9\"\n            cover\n            :src=\"msg.payload.NVR.ThisCamera.snapshot\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        ></v-img>\n        <div \n            v-else \n            class=\"placeholder-container\"\n            :style=\"{\n                width: (msg && msg.width ? msg.width : 250) + 'px',\n                height: ((msg && msg.width ? msg.width : 250) / (msg && msg.aspec ? msg.aspec : 16/9)) + 'px'\n            }\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        >\n            <div class=\"placeholder-content\">\n                <v-icon\n                    size=\"56\"\n                    color=\"grey darken-2\"\n                >mdi-video</v-icon>\n                <div class=\"placeholder-text\">{{ placeholderText }}</div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\n    export default {\n        computed: {\n            hasValidImage() {\n                return this.msg && this.msg.payload && \n                       this.msg.payload.NVR && \n                       this.msg.payload.NVR.ThisCamera && \n                       this.msg.payload.NVR.ThisCamera.snapshot;\n            },\n            placeholderText() {\n                if (this.msg && this.msg.payload && \n                    this.msg.payload.NVR && \n                    this.msg.payload.NVR.ThisCamera) {\n                    \n                    // First check for alt.CameraName\n                    if (this.msg.payload.NVR.ThisCamera.alt && \n                        this.msg.payload.NVR.ThisCamera.alt.CameraName) {\n                        return this.msg.payload.NVR.ThisCamera.alt.CameraName;\n                    }\n                    // Fall back to the original name property if available\n                    else if (this.msg.payload.NVR.ThisCamera.name) {\n                        return this.msg.payload.NVR.ThisCamera.name;\n                    }\n                    // Finally fall back to the default message\n                    return 'Camera Name not defined';\n                }\n                return 'Camera Name not defined';\n            },\n            truncatedName() {\n                if (!this.msg || !this.msg.payload || !this.msg.payload.NVR || !this.msg.payload.NVR.ThisCamera || !this.msg.payload.NVR.ThisCamera.name) {\n                    return '';\n                }\n                let name = this.msg.payload.NVR.ThisCamera.name;\n                return name.length > 19 ? name.substring(0, 17) + \"...\" : name;\n            },\n            info() {\n                if (!this.msg || !this.msg.payload) {\n                    return '';\n                }\n                if (this.msg.payload.length > 80) {\n                    return this.msg.payload.substring(0, 77) + \"...\";\n                }\n                return this.msg.payload;\n            }\n        },\n        methods: {\n            imageClicked() {\n                if (this.msg && this.msg.payload) {\n                    // Create a deep copy of the original message\n                    let msgCopy = JSON.parse(JSON.stringify(this.msg));\n                    \n                    // Remove the snapshot if it exists\n                    if (msgCopy.payload && msgCopy.payload.NVR && \n                        msgCopy.payload.NVR.ThisCamera) {\n                        delete msgCopy.payload.NVR.ThisCamera.snapshot;\n                    }\n                    \n                    // Send the modified message\n                    this.send(msgCopy);\n                }\n            }\n        }\n    }\n</script>\n\n<style scoped>\n.placeholder-container {\n    background-color: #f5f5f5;\n    border-radius: 4px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n}\n\n.placeholder-content {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 12px;\n}\n\n.placeholder-text {\n    margin-top: 12px;\n    color: #616161;\n    font-size: 16px;\n    font-weight: 500;\n}\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1020,
+        "y": 420,
+        "wires": [
+            [
+                "e40b549ff09b14c9"
+            ]
+        ]
+    },
+    {
+        "id": "67c4428045d9c9cd",
+        "type": "ui-template",
+        "z": "6b2971d3359ff7c2",
+        "group": "b7aebf2c9be0cdc5",
+        "page": "",
+        "ui": "",
+        "name": "Group 3",
+        "order": 1,
+        "width": "3",
+        "height": "1",
+        "head": "",
+        "format": "<template>\n    <div>\n        <h3 v-if=\"msg.payload\" style=\"font-size: 21px;\">{{ truncatedName }}</h3>\n        <v-img\n            v-if=\"hasValidImage\"\n            :width=\"msg.width || 350\"\n            aspect-ratio=\"msg.aspec || 16/9\"\n            cover\n            :src=\"msg.payload.NVR.ThisCamera.snapshot\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        ></v-img>\n        <div \n            v-else \n            class=\"placeholder-container\"\n            :style=\"{\n                width: (msg && msg.width ? msg.width : 250) + 'px',\n                height: ((msg && msg.width ? msg.width : 250) / (msg && msg.aspec ? msg.aspec : 16/9)) + 'px'\n            }\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        >\n            <div class=\"placeholder-content\">\n                <v-icon\n                    size=\"56\"\n                    color=\"grey darken-2\"\n                >mdi-video</v-icon>\n                <div class=\"placeholder-text\">{{ placeholderText }}</div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\n    export default {\n        computed: {\n            hasValidImage() {\n                return this.msg && this.msg.payload && \n                       this.msg.payload.NVR && \n                       this.msg.payload.NVR.ThisCamera && \n                       this.msg.payload.NVR.ThisCamera.snapshot;\n            },\n            placeholderText() {\n                if (this.msg && this.msg.payload && \n                    this.msg.payload.NVR && \n                    this.msg.payload.NVR.ThisCamera) {\n                    \n                    // First check for alt.CameraName\n                    if (this.msg.payload.NVR.ThisCamera.alt && \n                        this.msg.payload.NVR.ThisCamera.alt.CameraName) {\n                        return this.msg.payload.NVR.ThisCamera.alt.CameraName;\n                    }\n                    // Fall back to the original name property if available\n                    else if (this.msg.payload.NVR.ThisCamera.name) {\n                        return this.msg.payload.NVR.ThisCamera.name;\n                    }\n                    // Finally fall back to the default message\n                    return 'Camera Name not defined';\n                }\n                return 'Camera Name not defined';\n            },\n            truncatedName() {\n                if (!this.msg || !this.msg.payload || !this.msg.payload.NVR || !this.msg.payload.NVR.ThisCamera || !this.msg.payload.NVR.ThisCamera.name) {\n                    return '';\n                }\n                let name = this.msg.payload.NVR.ThisCamera.name;\n                return name.length > 19 ? name.substring(0, 17) + \"...\" : name;\n            },\n            info() {\n                if (!this.msg || !this.msg.payload) {\n                    return '';\n                }\n                if (this.msg.payload.length > 80) {\n                    return this.msg.payload.substring(0, 77) + \"...\";\n                }\n                return this.msg.payload;\n            }\n        },\n        methods: {\n            imageClicked() {\n                if (this.msg && this.msg.payload) {\n                    // Create a deep copy of the original message\n                    let msgCopy = JSON.parse(JSON.stringify(this.msg));\n                    \n                    // Remove the snapshot if it exists\n                    if (msgCopy.payload && msgCopy.payload.NVR && \n                        msgCopy.payload.NVR.ThisCamera) {\n                        delete msgCopy.payload.NVR.ThisCamera.snapshot;\n                    }\n                    \n                    // Send the modified message\n                    this.send(msgCopy);\n                }\n            }\n        }\n    }\n</script>\n\n<style scoped>\n.placeholder-container {\n    background-color: #f5f5f5;\n    border-radius: 4px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n}\n\n.placeholder-content {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 12px;\n}\n\n.placeholder-text {\n    margin-top: 12px;\n    color: #616161;\n    font-size: 16px;\n    font-weight: 500;\n}\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1020,
+        "y": 300,
+        "wires": [
+            [
+                "e40b549ff09b14c9"
+            ]
+        ]
+    },
+    {
+        "id": "c1d4c0849b778920",
+        "type": "ui-template",
+        "z": "6b2971d3359ff7c2",
+        "group": "51eda181ec65d03d",
+        "page": "",
+        "ui": "",
+        "name": "",
+        "order": 1,
+        "width": "3",
+        "height": "1",
+        "head": "",
+        "format": "<template>\n    <div>\n        <h3 v-if=\"msg.payload\" style=\"font-size: 21px;\">{{ truncatedName }}</h3>\n        <v-img\n            v-if=\"hasValidImage\"\n            :width=\"msg.width || 350\"\n            aspect-ratio=\"msg.aspec || 16/9\"\n            cover\n            :src=\"msg.payload.NVR.ThisCamera.snapshot\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        ></v-img>\n        <div \n            v-else \n            class=\"placeholder-container\"\n            :style=\"{\n                width: (msg && msg.width ? msg.width : 250) + 'px',\n                height: ((msg && msg.width ? msg.width : 250) / (msg && msg.aspec ? msg.aspec : 16/9)) + 'px'\n            }\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        >\n            <div class=\"placeholder-content\">\n                <v-icon\n                    size=\"56\"\n                    color=\"grey darken-2\"\n                >mdi-video</v-icon>\n                <div class=\"placeholder-text\">{{ placeholderText }}</div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\n    export default {\n        computed: {\n            hasValidImage() {\n                return this.msg && this.msg.payload && \n                       this.msg.payload.NVR && \n                       this.msg.payload.NVR.ThisCamera && \n                       this.msg.payload.NVR.ThisCamera.snapshot;\n            },\n            placeholderText() {\n                if (this.msg && this.msg.payload && \n                    this.msg.payload.NVR && \n                    this.msg.payload.NVR.ThisCamera) {\n                    \n                    // First check for alt.CameraName\n                    if (this.msg.payload.NVR.ThisCamera.alt && \n                        this.msg.payload.NVR.ThisCamera.alt.CameraName) {\n                        return this.msg.payload.NVR.ThisCamera.alt.CameraName;\n                    }\n                    // Fall back to the original name property if available\n                    else if (this.msg.payload.NVR.ThisCamera.name) {\n                        return this.msg.payload.NVR.ThisCamera.name;\n                    }\n                    // Finally fall back to the default message\n                    return 'Camera Name not defined';\n                }\n                return 'Camera Name not defined';\n            },\n            truncatedName() {\n                if (!this.msg || !this.msg.payload || !this.msg.payload.NVR || !this.msg.payload.NVR.ThisCamera || !this.msg.payload.NVR.ThisCamera.name) {\n                    return '';\n                }\n                let name = this.msg.payload.NVR.ThisCamera.name;\n                return name.length > 19 ? name.substring(0, 17) + \"...\" : name;\n            },\n            info() {\n                if (!this.msg || !this.msg.payload) {\n                    return '';\n                }\n                if (this.msg.payload.length > 80) {\n                    return this.msg.payload.substring(0, 77) + \"...\";\n                }\n                return this.msg.payload;\n            }\n        },\n        methods: {\n            imageClicked() {\n                if (this.msg && this.msg.payload) {\n                    // Create a deep copy of the original message\n                    let msgCopy = JSON.parse(JSON.stringify(this.msg));\n                    \n                    // Remove the snapshot if it exists\n                    if (msgCopy.payload && msgCopy.payload.NVR && \n                        msgCopy.payload.NVR.ThisCamera) {\n                        delete msgCopy.payload.NVR.ThisCamera.snapshot;\n                    }\n                    \n                    // Send the modified message\n                    this.send(msgCopy);\n                }\n            }\n        }\n    }\n</script>\n\n<style scoped>\n.placeholder-container {\n    background-color: #f5f5f5;\n    border-radius: 4px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n}\n\n.placeholder-content {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 12px;\n}\n\n.placeholder-text {\n    margin-top: 12px;\n    color: #616161;\n    font-size: 16px;\n    font-weight: 500;\n}\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1020,
+        "y": 340,
+        "wires": [
+            [
+                "e40b549ff09b14c9"
+            ]
+        ]
+    },
+    {
+        "id": "7e89ddc405d1c463",
+        "type": "ui-template",
+        "z": "6b2971d3359ff7c2",
+        "group": "39b1cd4bd186b215",
+        "page": "",
+        "ui": "",
+        "name": "",
+        "order": 1,
+        "width": "3",
+        "height": "1",
+        "head": "",
+        "format": "<template>\n    <div>\n        <h3 v-if=\"msg.payload\" style=\"font-size: 21px;\">{{ truncatedName }}</h3>\n        <v-img\n            v-if=\"hasValidImage\"\n            :width=\"msg.width || 350\"\n            aspect-ratio=\"msg.aspec || 16/9\"\n            cover\n            :src=\"msg.payload.NVR.ThisCamera.snapshot\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        ></v-img>\n        <div \n            v-else \n            class=\"placeholder-container\"\n            :style=\"{\n                width: (msg && msg.width ? msg.width : 250) + 'px',\n                height: ((msg && msg.width ? msg.width : 250) / (msg && msg.aspec ? msg.aspec : 16/9)) + 'px'\n            }\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        >\n            <div class=\"placeholder-content\">\n                <v-icon\n                    size=\"56\"\n                    color=\"grey darken-2\"\n                >mdi-video</v-icon>\n                <div class=\"placeholder-text\">{{ placeholderText }}</div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\n    export default {\n        computed: {\n            hasValidImage() {\n                return this.msg && this.msg.payload && \n                       this.msg.payload.NVR && \n                       this.msg.payload.NVR.ThisCamera && \n                       this.msg.payload.NVR.ThisCamera.snapshot;\n            },\n            placeholderText() {\n                if (this.msg && this.msg.payload && \n                    this.msg.payload.NVR && \n                    this.msg.payload.NVR.ThisCamera) {\n                    \n                    // First check for alt.CameraName\n                    if (this.msg.payload.NVR.ThisCamera.alt && \n                        this.msg.payload.NVR.ThisCamera.alt.CameraName) {\n                        return this.msg.payload.NVR.ThisCamera.alt.CameraName;\n                    }\n                    // Fall back to the original name property if available\n                    else if (this.msg.payload.NVR.ThisCamera.name) {\n                        return this.msg.payload.NVR.ThisCamera.name;\n                    }\n                    // Finally fall back to the default message\n                    return 'Camera Name not defined';\n                }\n                return 'Camera Name not defined';\n            },\n            truncatedName() {\n                if (!this.msg || !this.msg.payload || !this.msg.payload.NVR || !this.msg.payload.NVR.ThisCamera || !this.msg.payload.NVR.ThisCamera.name) {\n                    return '';\n                }\n                let name = this.msg.payload.NVR.ThisCamera.name;\n                return name.length > 19 ? name.substring(0, 17) + \"...\" : name;\n            },\n            info() {\n                if (!this.msg || !this.msg.payload) {\n                    return '';\n                }\n                if (this.msg.payload.length > 80) {\n                    return this.msg.payload.substring(0, 77) + \"...\";\n                }\n                return this.msg.payload;\n            }\n        },\n        methods: {\n            imageClicked() {\n                if (this.msg && this.msg.payload) {\n                    // Create a deep copy of the original message\n                    let msgCopy = JSON.parse(JSON.stringify(this.msg));\n                    \n                    // Remove the snapshot if it exists\n                    if (msgCopy.payload && msgCopy.payload.NVR && \n                        msgCopy.payload.NVR.ThisCamera) {\n                        delete msgCopy.payload.NVR.ThisCamera.snapshot;\n                    }\n                    \n                    // Send the modified message\n                    this.send(msgCopy);\n                }\n            }\n        }\n    }\n</script>\n\n<style scoped>\n.placeholder-container {\n    background-color: #f5f5f5;\n    border-radius: 4px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n}\n\n.placeholder-content {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 12px;\n}\n\n.placeholder-text {\n    margin-top: 12px;\n    color: #616161;\n    font-size: 16px;\n    font-weight: 500;\n}\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1020,
+        "y": 380,
+        "wires": [
+            [
+                "e40b549ff09b14c9"
+            ]
+        ]
+    },
+    {
+        "id": "c4cf50bca8be48e1",
+        "type": "inject",
+        "z": "6b2971d3359ff7c2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "AX0Agv8KENfnGTRoh0PJjElIdxoa6nkSFgoUz4Smw67yQdan9ywOZx30Gd1fM00aEJeGbyIAF01Omr7Xdg2jpBciEErcXsyeH0Aks6rV43kVHZEqEEFQSVRlc3RDbGllbnRHYWIyGxoQDTGsKGwLTR6uuh_ivKZpgCoHYXBpdXNlcg",
+        "payloadType": "str",
+        "x": 90,
+        "y": 40,
+        "wires": [
+            [
+                "694346c4e327e988"
+            ]
+        ]
+    },
+    {
+        "id": "ab3b6a4b07672139",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "name": "C Offline",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "75df3adea7a6f4c1",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "name": "AfterSnapshot 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "eb2245be91c433c1",
+        "type": "inject",
+        "z": "6b2971d3359ff7c2",
+        "name": "API IP",
+        "props": [
+            {
+                "p": "payload.NVR.IP",
+                "v": "10.5.1.175:8443",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 590,
+        "y": 40,
+        "wires": [
+            [
+                "300bcc6c3371d4be"
+            ]
+        ]
+    },
+    {
+        "id": "300bcc6c3371d4be",
+        "type": "change",
+        "z": "6b2971d3359ff7c2",
+        "name": "NVR.IP",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.NVR.IP",
+                "pt": "msg",
+                "to": "NVR.IP",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b2b39c669903f198",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "name": "AfterSnapshot 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1080,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "a8abb1c60cd5511f",
+        "type": "inject",
+        "z": "6b2971d3359ff7c2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.NVR",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "topic": "",
+        "x": 390,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8d0d8fc21976a1eb",
+        "type": "ui-control",
+        "z": "6b2971d3359ff7c2",
+        "d": true,
+        "name": "ui changes",
+        "ui": "046d86d52980a9f9",
+        "events": "change",
+        "x": 1530,
+        "y": 600,
+        "wires": [
+            [
+                "255db74c7ed38dd1"
+            ]
+        ]
+    },
+    {
+        "id": "267fe90bd071e667",
+        "type": "ui-event",
+        "z": "6b2971d3359ff7c2",
+        "d": true,
+        "ui": "046d86d52980a9f9",
+        "name": "change",
+        "x": 1550,
+        "y": 640,
+        "wires": [
+            [
+                "9daf0790c002c220"
+            ]
+        ]
+    },
+    {
+        "id": "255db74c7ed38dd1",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "d": true,
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1700,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "9daf0790c002c220",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "d": true,
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1700,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "e40b549ff09b14c9",
+        "type": "link out",
+        "z": "6b2971d3359ff7c2",
+        "name": "uiOut",
+        "mode": "link",
+        "links": [
+            "d6533c13ce2ca5ab"
+        ],
+        "x": 1225,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "8aefb676f0c5ba13",
+        "type": "link out",
+        "z": "6b2971d3359ff7c2",
+        "name": "GetCameras",
+        "mode": "link",
+        "links": [
+            "c3ced492b8eb02d9"
+        ],
+        "x": 635,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "d6e77c58c9587564",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "name": "G1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1310,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7773dbfefe08d01a",
+        "type": "debug",
+        "z": "6b2971d3359ff7c2",
+        "name": "G2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1310,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "0c2d32300ed53085",
+        "type": "function",
+        "z": "6b2971d3359ff7c2",
+        "name": "106",
+        "func": "// Define the variables at the beginning\nlet Monitor = 1;\nlet altCameraName = \"Kamera 106\";\nlet OpenPTZMenu = true;\n\nconst camera = 106;\n\n// Ensure msg.payload and msg.payload.NVR exist\nif (msg.payload && msg.payload.NVR) {\n    // Ensure ThisCamera exists and initialize it with an alt object\n    msg.payload.NVR.ThisCamera = msg.payload.NVR.ThisCamera || {};\n    // Ensure the alt object exists\n    msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n\n    // Check if cameras array exists in msg.payload.NVR\n    if (Array.isArray(msg.payload.NVR.cameras)) {\n        // Find the camera object with a matching logicalId\n        const foundCamera = msg.payload.NVR.cameras.find(cam => cam.logicalId === camera);\n\n        if (foundCamera) {\n            // Copy all properties from the found camera to ThisCamera\n            Object.assign(msg.payload.NVR.ThisCamera, foundCamera);\n            \n            // Ensure alt object exists after assignment\n            msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n            msg.payload.NVR.ThisCamera.alt.offline = false;\n        } else {\n            // node.warn(`No camera found with logicalId ${camera}`);\n            msg.payload.NVR.ThisCamera.alt.offline = true;\n        }\n        // Remove cameras array from the output\n        delete msg.payload.NVR.cameras;\n    } else {\n        // node.warn(\"No cameras array found in msg.payload.NVR\");\n        msg.payload.NVR.ThisCamera.alt.offline = true;\n    }\n    \n    // Assign the variables to the output message\n    msg.payload.NVR.ThisCamera.Monitor = Monitor;\n    msg.payload.NVR.ThisCamera.alt.CameraName = altCameraName;\n    msg.payload.NVR.ThisCamera.alt.Logicalid = camera;\n    msg.payload.NVR.ThisCamera.PTZMenu = OpenPTZMenu;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 220,
+        "wires": [
+            [
+                "259d7bc9c1b36608"
+            ]
+        ]
+    },
+    {
+        "id": "259d7bc9c1b36608",
+        "type": "subflow:056b35bf73ad55ce",
+        "z": "6b2971d3359ff7c2",
+        "name": "Snapshot",
+        "x": 840,
+        "y": 220,
+        "wires": [
+            [
+                "069d7e72f6cea00e"
+            ]
+        ]
+    },
+    {
+        "id": "069d7e72f6cea00e",
+        "type": "ui-template",
+        "z": "6b2971d3359ff7c2",
+        "group": "ef078dcedac2022e",
+        "page": "",
+        "ui": "",
+        "name": "",
+        "order": 1,
+        "width": "3",
+        "height": "1",
+        "head": "",
+        "format": "<template>\n    <div>\n        <h3 v-if=\"msg.payload\" style=\"font-size: 21px;\">{{ truncatedName }}</h3>\n        <v-img\n            v-if=\"hasValidImage\"\n            :width=\"msg.width || 350\"\n            aspect-ratio=\"msg.aspec || 16/9\"\n            cover\n            :src=\"msg.payload.NVR.ThisCamera.snapshot\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        ></v-img>\n        <div \n            v-else \n            class=\"placeholder-container\"\n            :style=\"{\n                width: (msg && msg.width ? msg.width : 250) + 'px',\n                height: ((msg && msg.width ? msg.width : 250) / (msg && msg.aspec ? msg.aspec : 16/9)) + 'px'\n            }\"\n            @click=\"imageClicked\"\n            style=\"cursor: pointer;\"\n        >\n            <div class=\"placeholder-content\">\n                <v-icon\n                    size=\"56\"\n                    color=\"grey darken-2\"\n                >mdi-video</v-icon>\n                <div class=\"placeholder-text\">{{ placeholderText }}</div>\n            </div>\n        </div>\n    </div>\n</template>\n\n<script>\n    export default {\n        computed: {\n            hasValidImage() {\n                return this.msg && this.msg.payload && \n                       this.msg.payload.NVR && \n                       this.msg.payload.NVR.ThisCamera && \n                       this.msg.payload.NVR.ThisCamera.snapshot;\n            },\n            placeholderText() {\n                if (this.msg && this.msg.payload && \n                    this.msg.payload.NVR && \n                    this.msg.payload.NVR.ThisCamera) {\n                    \n                    // First check for alt.CameraName\n                    if (this.msg.payload.NVR.ThisCamera.alt && \n                        this.msg.payload.NVR.ThisCamera.alt.CameraName) {\n                        return this.msg.payload.NVR.ThisCamera.alt.CameraName;\n                    }\n                    // Fall back to the original name property if available\n                    else if (this.msg.payload.NVR.ThisCamera.name) {\n                        return this.msg.payload.NVR.ThisCamera.name;\n                    }\n                    // Finally fall back to the default message\n                    return 'Camera Name not defined';\n                }\n                return 'Camera Name not defined';\n            },\n            truncatedName() {\n                if (!this.msg || !this.msg.payload || !this.msg.payload.NVR || !this.msg.payload.NVR.ThisCamera || !this.msg.payload.NVR.ThisCamera.name) {\n                    return '';\n                }\n                let name = this.msg.payload.NVR.ThisCamera.name;\n                return name.length > 19 ? name.substring(0, 17) + \"...\" : name;\n            },\n            info() {\n                if (!this.msg || !this.msg.payload) {\n                    return '';\n                }\n                if (this.msg.payload.length > 80) {\n                    return this.msg.payload.substring(0, 77) + \"...\";\n                }\n                return this.msg.payload;\n            }\n        },\n        methods: {\n            imageClicked() {\n                if (this.msg && this.msg.payload) {\n                    // Create a deep copy of the original message\n                    let msgCopy = JSON.parse(JSON.stringify(this.msg));\n                    \n                    // Remove the snapshot if it exists\n                    if (msgCopy.payload && msgCopy.payload.NVR && \n                        msgCopy.payload.NVR.ThisCamera) {\n                        delete msgCopy.payload.NVR.ThisCamera.snapshot;\n                    }\n                    \n                    // Send the modified message\n                    this.send(msgCopy);\n                }\n            }\n        }\n    }\n</script>\n\n<style scoped>\n.placeholder-container {\n    background-color: #f5f5f5;\n    border-radius: 4px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n}\n\n.placeholder-content {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 12px;\n}\n\n.placeholder-text {\n    margin-top: 12px;\n    color: #616161;\n    font-size: 16px;\n    font-weight: 500;\n}\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1020,
+        "y": 220,
+        "wires": [
+            [
+                "d6e77c58c9587564",
+                "e40b549ff09b14c9"
+            ]
+        ]
+    },
+    {
+        "id": "d6533c13ce2ca5ab",
+        "type": "link in",
+        "z": "cbd30218b8d8aa81",
+        "name": "uiOut",
+        "links": [
+            "e40b549ff09b14c9"
+        ],
+        "x": 145,
+        "y": 260,
+        "wires": [
+            [
+                "316898f9ce5e93af",
+                "b025b68a5b3a1075",
+                "14c1aae636bea1c8"
+            ]
+        ]
+    },
+    {
+        "id": "18c0d1a6e3efa809",
+        "type": "serial out",
+        "z": "cbd30218b8d8aa81",
+        "name": "USB0",
+        "serial": "53eceb07a060256d",
+        "x": 630,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "3a48c1b6646a773d",
+        "type": "debug",
+        "z": "cbd30218b8d8aa81",
+        "name": "SerialOut",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "316898f9ce5e93af",
+        "type": "function",
+        "z": "cbd30218b8d8aa81",
+        "name": "convert to VMS commad",
+        "func": "// This function processes camera data and formats the ID with Monitor number and logicalId\n// It handles offline cameras and undefined cases for both Monitor and logicalId\n\nif (msg.payload && msg.payload.NVR && msg.payload.NVR.ThisCamera) {\n    let logicalId;\n    let monitorNumber;\n\n    // Get the Monitor number if it exists\n    if (msg.payload.NVR.ThisCamera.Monitor !== undefined) {\n        monitorNumber = parseInt(msg.payload.NVR.ThisCamera.Monitor);\n        // Format the monitor number with leading zero if less than 10\n        monitorNumber = monitorNumber < 10 ? \"0\" + monitorNumber : monitorNumber.toString();\n    } else {\n        // Default monitor number if not found\n        monitorNumber = \"00\";\n    }\n\n    // Case 1: Camera is offline OR primary logicalId is undefined\n    if ((msg.payload.NVR.ThisCamera.alt && msg.payload.NVR.ThisCamera.alt.offline === true) ||\n        msg.payload.NVR.ThisCamera.logicalId === undefined) {\n\n        // Use the alternative logicalId if available\n        if (msg.payload.NVR.ThisCamera.alt && msg.payload.NVR.ThisCamera.alt.Logicalid !== undefined) {\n            logicalId = msg.payload.NVR.ThisCamera.alt.Logicalid;\n        }\n    }\n    // Case 2: Use the primary logicalId (normal case)\n    else if (msg.payload.NVR.ThisCamera.logicalId !== undefined) {\n        logicalId = msg.payload.NVR.ThisCamera.logicalId;\n    }\n\n    // Only proceed if we found a valid logicalId\n    if (logicalId !== undefined) {\n        // Get the number from logicalId\n        let number = parseInt(logicalId);\n\n        // Format the number with leading zero if less than 10\n        let formattedNumber = number < 10 ? \"0\" + number : number.toString();\n\n        // Create the final command string \n        // where X is the Monitor number and Y is the logicalId number\n        msg.payload = monitorNumber + \"MonitorCommand\" + formattedNumber + \"Rules1\";\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 260,
+        "wires": [
+            [
+                "3a48c1b6646a773d",
+                "18c0d1a6e3efa809"
+            ]
+        ]
+    },
+    {
+        "id": "b025b68a5b3a1075",
+        "type": "function",
+        "z": "cbd30218b8d8aa81",
+        "name": "check PTZ Menu",
+        "func": "// This function checks if payload.NVR.ThisCamera.PTZMenu is true\n// If true, it sends the original payload as msg.PTZ and changes msg.payload to \"PTZ\"\n\n// Create a copy of the incoming message to avoid reference issues\nconst newMsg = {};\n\n// Check if the PTZ menu condition is true\nif (msg.payload && msg.payload.NVR && \n    msg.payload.NVR.ThisCamera && \n    msg.payload.NVR.ThisCamera.PTZMenu === true) {\n    \n    // Store the original payload in msg.PTZ\n    newMsg.PTZ = msg.payload;\n    \n    // Set msg.payload to \"PTZ\"\n    newMsg.payload = \"PTZ\";\n    global.set(\"PTZ\", true);\n    \n    // Return the modified message\n    return newMsg;\n} else {\n    // If condition isn't met, pass through the original message\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 340,
+        "wires": [
+            [
+                "5a4d59718cd9fc94"
+            ]
+        ]
+    },
+    {
+        "id": "14c1aae636bea1c8",
+        "type": "debug",
+        "z": "cbd30218b8d8aa81",
+        "name": "ui",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 290,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "5a4d59718cd9fc94",
+        "type": "ui-control",
+        "z": "cbd30218b8d8aa81",
+        "name": "",
+        "ui": "046d86d52980a9f9",
+        "events": "all",
+        "x": 580,
+        "y": 340,
+        "wires": [
+            [
+                "be41c86878a6b585"
+            ]
+        ]
+    },
+    {
+        "id": "be41c86878a6b585",
+        "type": "debug",
+        "z": "cbd30218b8d8aa81",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "82698c564e94c318",
+        "type": "link in",
+        "z": "cbd30218b8d8aa81",
+        "name": "COM Port",
+        "links": [
+            "30d9642f5b2c51a7",
+            "3e839e657e5e8662",
+            "22154db447c4bc64"
+        ],
+        "x": 465,
+        "y": 200,
+        "wires": [
+            [
+                "18c0d1a6e3efa809",
+                "abb8acb0d45e996a"
+            ]
+        ]
+    },
+    {
+        "id": "ad32dfdc59f4dd98",
+        "type": "inject",
+        "z": "cbd30218b8d8aa81",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "Login",
+        "payloadType": "str",
+        "x": 370,
+        "y": 400,
+        "wires": [
+            [
+                "5a4d59718cd9fc94"
+            ]
+        ]
+    },
+    {
+        "id": "826e4321a36bbe6d",
+        "type": "link in",
+        "z": "cbd30218b8d8aa81",
+        "name": "ui control",
+        "links": [
+            "50ab216df79acd1d"
+        ],
+        "x": 345,
+        "y": 460,
+        "wires": [
+            [
+                "5a4d59718cd9fc94",
+                "89e33ddf92541a71"
+            ]
+        ]
+    },
+    {
+        "id": "89e33ddf92541a71",
+        "type": "debug",
+        "z": "cbd30218b8d8aa81",
+        "name": "Login Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "abb8acb0d45e996a",
+        "type": "debug",
+        "z": "cbd30218b8d8aa81",
+        "name": "PTZ Menu",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "89a1b755da8654a3",
+        "type": "ui-button",
+        "z": "e391987ca15050dc",
+        "group": "a2c671cbe65fb2e0",
+        "name": "Home",
+        "label": "Select 1",
+        "order": 1,
+        "width": "2",
+        "height": "3",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "home",
+        "iconPosition": "left",
+        "payload": "E1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "violet",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 210,
+        "y": 100,
+        "wires": [
+            [
+                "c24283b34c2d2c9f",
+                "cb680e9b36b74e79",
+                "2cc877c50b895a1d"
+            ]
+        ]
+    },
+    {
+        "id": "c24283b34c2d2c9f",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "name": "debug 9",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 360,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "cb680e9b36b74e79",
+        "type": "ui-control",
+        "z": "e391987ca15050dc",
+        "name": "",
+        "ui": "046d86d52980a9f9",
+        "events": "all",
+        "x": 360,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5b02d505fb697e65",
+        "type": "ui-button",
+        "z": "e391987ca15050dc",
+        "group": "d9b8c8ecaafedbfd",
+        "name": "Preset 1",
+        "label": "Preset 1",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "location-enter",
+        "iconPosition": "left",
+        "payload": "01PresetCommand",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "blue",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 420,
+        "y": 260,
+        "wires": [
+            [
+                "30d9642f5b2c51a7"
+            ]
+        ]
+    },
+    {
+        "id": "68d99f7590420931",
+        "type": "ui-button",
+        "z": "e391987ca15050dc",
+        "group": "d9b8c8ecaafedbfd",
+        "name": "Preset 2",
+        "label": "Preset 2",
+        "order": 2,
+        "width": "2",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "location-enter",
+        "iconPosition": "left",
+        "payload": "08PresetCommand",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "blue",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 420,
+        "y": 300,
+        "wires": [
+            [
+                "30d9642f5b2c51a7"
+            ]
+        ]
+    },
+    {
+        "id": "e69932c28e8841ee",
+        "type": "ui-button",
+        "z": "e391987ca15050dc",
+        "group": "d9b8c8ecaafedbfd",
+        "name": "Preset 3",
+        "label": "Preset 3",
+        "order": 3,
+        "width": "2",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "location-enter",
+        "iconPosition": "left",
+        "payload": "04PresetCommand",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "blue",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 420,
+        "y": 340,
+        "wires": [
+            [
+                "30d9642f5b2c51a7"
+            ]
+        ]
+    },
+    {
+        "id": "8b5f32324c3680df",
+        "type": "ui-button",
+        "z": "e391987ca15050dc",
+        "group": "e9a5dee9d5441b31",
+        "name": "Paue",
+        "label": "Pause Camera",
+        "order": 1,
+        "width": "2",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "cctv-off",
+        "iconPosition": "left",
+        "payload": "02RuleCommand",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "red",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 890,
+        "y": 180,
+        "wires": [
+            [
+                "22154db447c4bc64"
+            ]
+        ]
+    },
+    {
+        "id": "26bbb9b47f2293d0",
+        "type": "ui-button",
+        "z": "e391987ca15050dc",
+        "group": "e9a5dee9d5441b31",
+        "name": "Resume",
+        "label": "Resume Camera",
+        "order": 2,
+        "width": "2",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "cctv",
+        "iconPosition": "left",
+        "payload": "01RuleCommand",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "green",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 900,
+        "y": 220,
+        "wires": [
+            [
+                "22154db447c4bc64"
+            ]
+        ]
+    },
+    {
+        "id": "30d9642f5b2c51a7",
+        "type": "link out",
+        "z": "e391987ca15050dc",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "82698c564e94c318"
+        ],
+        "x": 755,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "2b7940ad71d03eb9",
+        "type": "function",
+        "z": "e391987ca15050dc",
+        "name": "EXITPTZ",
+        "func": "// Check if incoming payload equals \"PTZ\"\nif (msg.payload === \"E1\") {\n    // If it matches, set the payload to \"EXITPTZ\"\n    msg.payload = \"EXITPTZ\";\n    // Return the modified message\n    return msg;\n} else {\n    // If it doesn't match, pass the original message through unchanged\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 140,
+        "wires": [
+            [
+                "30d9642f5b2c51a7"
+            ]
+        ]
+    },
+    {
+        "id": "2cc877c50b895a1d",
+        "type": "function",
+        "z": "e391987ca15050dc",
+        "name": "PTZ False",
+        "func": "// Check if incoming payload equals \"E1\" or \"Login\"\nif (msg.payload === \"E1\" || msg.payload === \"Login\") {\n    // If it matches, set the global variable PTZ to false\n    global.set(\"PTZ\", false);\n    \n    // Return the original message unchanged\n    return msg;\n} else {\n    // If it doesn't match, pass the original message through unchanged\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 140,
+        "wires": [
+            [
+                "2b7940ad71d03eb9"
+            ]
+        ]
+    },
+    {
+        "id": "fae95b847ccb3cd1",
+        "type": "pimcp3008",
+        "z": "e391987ca15050dc",
+        "name": "X",
+        "dev": "3208",
+        "pin": 0,
+        "dnum": "0",
+        "bus": "0",
+        "x": 250,
+        "y": 620,
+        "wires": [
+            [
+                "28a3875971f28e85",
+                "ccfa86c820c1e574"
+            ]
+        ]
+    },
+    {
+        "id": "406aca5f245068c9",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "name": "payload",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "8da42c7281dda6da",
+        "type": "pimcp3008",
+        "z": "e391987ca15050dc",
+        "name": "Y",
+        "dev": "3208",
+        "pin": "1",
+        "dnum": "0",
+        "bus": "0",
+        "x": 250,
+        "y": 660,
+        "wires": [
+            [
+                "f73f49b518b8b30d",
+                "362a2d4a342771e3"
+            ]
+        ]
+    },
+    {
+        "id": "64d724e10731cde7",
+        "type": "pimcp3008",
+        "z": "e391987ca15050dc",
+        "name": "Z",
+        "dev": "3208",
+        "pin": "2",
+        "dnum": "0",
+        "bus": "0",
+        "x": 250,
+        "y": 700,
+        "wires": [
+            [
+                "be280c09c3b4e6a1",
+                "eaad2629acc9c164"
+            ]
+        ]
+    },
+    {
+        "id": "eb4dfd20f9837861",
+        "type": "inject",
+        "z": "e391987ca15050dc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "0.1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 90,
+        "y": 620,
+        "wires": [
+            [
+                "fae95b847ccb3cd1",
+                "8da42c7281dda6da",
+                "64d724e10731cde7"
+            ]
+        ]
+    },
+    {
+        "id": "f73f49b518b8b30d",
+        "type": "change",
+        "z": "e391987ca15050dc",
+        "name": "Joystick Y",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.Joystick.Y",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 660,
+        "wires": [
+            [
+                "6b5aaee98b2cce89"
+            ]
+        ]
+    },
+    {
+        "id": "28a3875971f28e85",
+        "type": "change",
+        "z": "e391987ca15050dc",
+        "name": "Joystick X",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.Joystick.X",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 620,
+        "wires": [
+            [
+                "6b5aaee98b2cce89"
+            ]
+        ]
+    },
+    {
+        "id": "be280c09c3b4e6a1",
+        "type": "change",
+        "z": "e391987ca15050dc",
+        "name": "Joystick Z",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.Joystick.Z",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 440,
+        "y": 700,
+        "wires": [
+            [
+                "6b5aaee98b2cce89"
+            ]
+        ]
+    },
+    {
+        "id": "6b5aaee98b2cce89",
+        "type": "function",
+        "z": "e391987ca15050dc",
+        "name": "dead Band",
+        "func": "// Get the joystick value and determine which axis it is\nlet axisValue = null;\nlet axisName = null;\nif (msg.payload.Joystick && typeof msg.payload.Joystick.X !== 'undefined') {\n    axisValue = msg.payload.Joystick.X;\n    axisName = 'X';\n} else if (msg.payload.Joystick && typeof msg.payload.Joystick.Y !== 'undefined') {\n    axisValue = msg.payload.Joystick.Y;\n    axisName = 'Y';\n} else if (msg.payload.Joystick && typeof msg.payload.Joystick.Z !== 'undefined') {\n    axisValue = msg.payload.Joystick.Z;\n    axisName = 'Z';\n}\n\n// Store last sent values in context\nif (!context.lastSent) {\n    context.lastSent = {\n        X: null,\n        Y: null,\n        Z: null\n    };\n}\n\n// Only continue if we found a valid axis\nif (axisValue !== null && axisName !== null) {\n    // Axis-specific centers and ranges\n    const centers = {\n        X: 2014,\n        Y: 1900,\n        Z: 2010\n    };\n    \n    // Axis-specific min and max values\n    const minValues = {\n        X: 403,\n        Y: 402,\n        Z: 390\n    };\n    \n    const maxValues = {\n        X: 3681,\n        Y: 3681,\n        Z: 3680\n    };\n    \n    // Get specific values for this axis\n    const center = centers[axisName];\n    const minValue = minValues[axisName];\n    const maxValue = maxValues[axisName];\n    \n    // Deadband range (500 in each direction)\n    const deadbandMin = center - 500;\n    const deadbandMax = center + 500;\n    \n    // Make sure deadband doesn't go below min or above max\n    const effectiveDeadbandMin = Math.max(deadbandMin, minValue);\n    const effectiveDeadbandMax = Math.min(deadbandMax, maxValue);\n    \n    let normalizedValue;\n    \n    // Check if the value is within the deadband\n    if (axisValue >= effectiveDeadbandMin && axisValue <= effectiveDeadbandMax) {\n        // Within deadband - set to 0\n        normalizedValue = 0;\n    } else if (axisValue < effectiveDeadbandMin) {\n        // For values below deadband (-1 to -0.4)\n        normalizedValue = -1 + ((axisValue - minValue) / (effectiveDeadbandMin - minValue)) * 0.6;\n        // Apply minimum threshold of -0.4 when just outside deadband\n        normalizedValue = Math.min(-0.4, normalizedValue);\n    } else {\n        // For values above deadband (0.4 to 1)\n        normalizedValue = 0.4 + ((axisValue - effectiveDeadbandMax) / (maxValue - effectiveDeadbandMax)) * 0.6;\n        // Apply minimum threshold of 0.4 when just outside deadband\n        normalizedValue = Math.max(0.4, normalizedValue);\n    }\n    \n    // Ensure value is within -1 to 1 range (in case of any calculation edge cases)\n    normalizedValue = Math.max(-1, Math.min(1, normalizedValue));\n    \n    // Invert Y-axis values (multiply by -1)\n    if (axisName === 'Y') {\n        normalizedValue = -normalizedValue;\n    }\n    \n    // Round to nearest 0.01\n    normalizedValue = Math.round(normalizedValue * 100) / 100;\n    \n    // Update the value for this axis\n    context.lastSent[axisName] = normalizedValue;\n}\n\n// Create full joystick state\nlet hasChanged = false;\nlet joystickState = {\n    X: context.lastSent.X !== null ? context.lastSent.X : 0,\n    Y: context.lastSent.Y !== null ? context.lastSent.Y : 0,\n    Z: context.lastSent.Z !== null ? context.lastSent.Z : 0\n};\n\n// Check if current state differs from previous state\nif (!context.previousState) {\n    context.previousState = {\n        X: null,\n        Y: null,\n        Z: null\n    };\n    hasChanged = true;  // First run, definitely changed\n} else {\n    // Check each axis for changes\n    ['X', 'Y', 'Z'].forEach(axis => {\n        if (joystickState[axis] !== context.previousState[axis]) {\n            hasChanged = true;\n        }\n    });\n}\n\n// Only send message if values have changed\nif (hasChanged) {\n    // Update previous state\n    context.previousState = JSON.parse(JSON.stringify(joystickState));\n    \n    // Determine action state\n    let allZero = true;\n    for (let axis in joystickState) {\n        if (joystickState[axis] !== 0) {\n            allZero = false;\n            break;\n        }\n    }\n    \n    // Add action field\n    joystickState.action = allZero ? \"STOP\" : \"START\";\n    \n    // Return new message with processed values\n    return {\n        payload: {\n            Joystick: joystickState\n        }\n    };\n}\n\n// Return null if nothing changed\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 660,
+        "wires": [
+            [
+                "406aca5f245068c9",
+                "d520e18a301eadec",
+                "4b6dbbf29be23a5f",
+                "b0cafd7661f5fe94"
+            ]
+        ]
+    },
+    {
+        "id": "ccfa86c820c1e574",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "name": "debug 6",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "eaad2629acc9c164",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "name": "debug 7",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "362a2d4a342771e3",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "name": "debug 8",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "68e5570a0e2282b2",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "name": "debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "d1952619f312ca06",
+        "type": "function",
+        "z": "e391987ca15050dc",
+        "name": "3 NOT changed?!",
+        "func": "const camera = 106;\n\n// Ensure msg.payload and msg.payload.NVR exist\nif (msg.payload && msg.payload.NVR) {\n    // Ensure ThisCamera exists\n    msg.payload.NVR.ThisCamera = msg.payload.NVR.ThisCamera || {};\n\n    // Check if cameras array exists in msg.payload.NVR\n    if (Array.isArray(msg.payload.NVR.cameras)) {\n        // Find the camera object with a matching logicalId\n        const foundCamera = msg.payload.NVR.cameras.find(cam => cam.logicalId === camera);\n\n        if (foundCamera) {\n            // Copy all properties from the found camera to ThisCamera\n            Object.assign(msg.payload.NVR.ThisCamera, foundCamera);\n        } else {\n            node.warn(`No camera found with logicalId ${camera}`);\n        }\n        // Remove cameras array from the output\n        delete msg.payload.NVR.cameras;\n    } else {\n        node.warn(\"No cameras array found in msg.payload.NVR\");\n    }\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 880,
+        "wires": [
+            [
+                "50859817a5d129b7",
+                "68e5570a0e2282b2",
+                "b0cafd7661f5fe94"
+            ]
+        ]
+    },
+    {
+        "id": "50859817a5d129b7",
+        "type": "join",
+        "z": "e391987ca15050dc",
+        "d": true,
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "payload",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": true,
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1030,
+        "y": 880,
+        "wires": [
+            [
+                "dc874dc2391ade1b",
+                "9b07153a9a4f1083"
+            ]
+        ]
+    },
+    {
+        "id": "9b07153a9a4f1083",
+        "type": "subflow:53a89aef85efe282",
+        "z": "e391987ca15050dc",
+        "name": "",
+        "x": 1290,
+        "y": 820,
+        "wires": [
+            [
+                "b3bad7c3037ea0fc"
+            ]
+        ]
+    },
+    {
+        "id": "dc874dc2391ade1b",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "name": "msg",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1290,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "b3bad7c3037ea0fc",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1450,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "c3ced492b8eb02d9",
+        "type": "link in",
+        "z": "e391987ca15050dc",
+        "name": "GetCameras",
+        "links": [
+            "8aefb676f0c5ba13"
+        ],
+        "x": 385,
+        "y": 940,
+        "wires": [
+            [
+                "d1952619f312ca06",
+                "f3a113e2886089e2"
+            ]
+        ]
+    },
+    {
+        "id": "bb7367376d67650b",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "d": true,
+        "name": "debug",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "8c32ddaca1d9b599",
+        "type": "change",
+        "z": "e391987ca15050dc",
+        "d": true,
+        "name": "Joystick X",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.Joystick.X",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 240,
+        "y": 1000,
+        "wires": [
+            [
+                "bb7367376d67650b"
+            ]
+        ]
+    },
+    {
+        "id": "f89cadded33f8a8f",
+        "type": "change",
+        "z": "e391987ca15050dc",
+        "d": true,
+        "name": "Joystick Y",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.Joystick.Y",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 240,
+        "y": 1040,
+        "wires": [
+            [
+                "bb7367376d67650b"
+            ]
+        ]
+    },
+    {
+        "id": "45d1040dd5a5f866",
+        "type": "inject",
+        "z": "e391987ca15050dc",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0.5",
+        "payloadType": "num",
+        "x": 90,
+        "y": 1000,
+        "wires": [
+            [
+                "8c32ddaca1d9b599"
+            ]
+        ]
+    },
+    {
+        "id": "d520e18a301eadec",
+        "type": "function",
+        "z": "e391987ca15050dc",
+        "name": "VMS Commands",
+        "func": "// Get the PTZ control state from global context\nconst ptzValue = global.get(\"PTZ\");\n\n// First check if PTZ control is enabled\nif (!ptzValue) {\n    return null;\n}\n\n// This function maps joystick X, Y, Z values to specific commands\n// Input expects payload.Joystick object with X, Y, Z properties (values from -1 to 1)\n// and possibly an action property\n// Define threshold for considering joystick movement significant\nconst threshold = 0.4;\n// Initialize the output command\nlet command = \"\";\n// Check if we have a STOP action first\nif (msg.payload.Joystick && msg.payload.Joystick.action === \"STOP\") {\n    command = \"EXITPTZ\";\n} else if (msg.payload.Joystick) {\n    // Process X axis (left/right)\n    if (msg.payload.Joystick.X <= -threshold) {\n        command = \"Left\"; // Left command when X is below -0.4\n    } else if (msg.payload.Joystick.X >= threshold) {\n        command = \"Right\"; // Right command when X is above 0.4\n    }\n    \n    // Process Y axis (up/down)\n    if (msg.payload.Joystick.Y <= -threshold) {\n        command = \"Down\"; // Down command when Y is below -0.4\n    } else if (msg.payload.Joystick.Y >= threshold) {\n        command = \"Up\"; // Up command when Y is above 0.4\n    }\n    \n    // Process Z axis (switched Fa and Ta as requested)\n    if (msg.payload.Joystick.Z <= -threshold) {\n        command = \"FarAway\"; // When Z is below -0.4\n    } else if (msg.payload.Joystick.Z >= threshold) {\n        command = \"AllthewayBack\"; // When Z is above 0.4\n    }\n}\n// Set the output payload to our command\nmsg.payload = command;\n// Return the message object\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 660,
+        "wires": [
+            [
+                "6386f0ddc57d6fa1"
+            ]
+        ]
+    },
+    {
+        "id": "e04d6fa0ec15220d",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "name": "debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1230,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "3020e4487c25c3dc",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "24c2716d07dddc7b",
+        "type": "function",
+        "z": "e391987ca15050dc",
+        "name": "global.PTZ",
+        "func": "// Get the PTZ global variable\nconst ptzValue = global.get(\"PTZ\");\n\n// Return it as the message payload\nmsg.payload = ptzValue;\n\n// Return the modified message object\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 100,
+        "wires": [
+            [
+                "3020e4487c25c3dc"
+            ]
+        ]
+    },
+    {
+        "id": "efe94990c4c45316",
+        "type": "inject",
+        "z": "e391987ca15050dc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 720,
+        "y": 100,
+        "wires": [
+            [
+                "24c2716d07dddc7b"
+            ]
+        ]
+    },
+    {
+        "id": "3e839e657e5e8662",
+        "type": "link out",
+        "z": "e391987ca15050dc",
+        "name": "COM Port",
+        "mode": "link",
+        "links": [
+            "82698c564e94c318"
+        ],
+        "x": 1225,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "6386f0ddc57d6fa1",
+        "type": "function",
+        "z": "e391987ca15050dc",
+        "d": true,
+        "name": "only change",
+        "func": "// Get the previous payload value from flow context\n// We'll use a unique key with this node's ID to avoid conflicts\nconst uniqueKey = 'previousPayload_' + this.id;\nlet previous = flow.get(uniqueKey);\n\n// Compare current payload with stored previous value\nif (previous !== undefined && JSON.stringify(msg.payload) === JSON.stringify(previous)) {\n    // If payload is the same as previous, return null to stop the flow\n    return null;\n} else {\n    // Store current payload in flow context for future comparison\n    // Store the stringified version to ensure consistent comparison\n    flow.set(uniqueKey, JSON.stringify(msg.payload));\n    \n    // Return the message since payload has changed\n    return msg;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1050,
+        "y": 660,
+        "wires": [
+            [
+                "3e839e657e5e8662",
+                "e04d6fa0ec15220d"
+            ]
+        ]
+    },
+    {
+        "id": "f3a113e2886089e2",
+        "type": "function",
+        "z": "e391987ca15050dc",
+        "name": "106",
+        "func": "// Define the default values at the beginning\nconst Monitor = 1;\nconst altCameraName = \"Kamera 106\";\nconst OpenPTZMenu = true;\nconst camera = 106;\n\n// Initialize msg if it doesn't exist\nmsg = msg || {};\n// Initialize payload if it doesn't exist\nmsg.payload = msg.payload || {};\n// Initialize NVR if it doesn't exist\nmsg.payload.NVR = msg.payload.NVR || {};\n// Initialize ThisCamera if it doesn't exist\nmsg.payload.NVR.ThisCamera = msg.payload.NVR.ThisCamera || {};\n// Initialize alt object if it doesn't exist\nmsg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n\n// If cameras array exists, try to find the requested camera\nif (Array.isArray(msg.payload.NVR.cameras)) {\n    // Find the camera object with a matching logicalId\n    const foundCamera = msg.payload.NVR.cameras.find(cam => cam.logicalId === camera);\n\n    if (foundCamera) {\n        // Copy all properties from the found camera to ThisCamera\n        Object.assign(msg.payload.NVR.ThisCamera, foundCamera);\n        \n        // Re-ensure alt object exists after assignment (it might get overwritten)\n        msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n        msg.payload.NVR.ThisCamera.alt.offline = false;\n    } else {\n        // No matching camera found in the array\n        msg.payload.NVR.ThisCamera.alt.offline = true;\n    }\n    // Remove cameras array from the output\n    delete msg.payload.NVR.cameras;\n} else {\n    // No cameras array found or msg was empty\n    msg.payload.NVR.ThisCamera.alt.offline = true;\n}\n\n// Always set these values, regardless of whether we found a camera or received an empty message\nmsg.payload.NVR.ThisCamera.Monitor = Monitor;\nmsg.payload.NVR.ThisCamera.alt.CameraName = altCameraName;\nmsg.payload.NVR.ThisCamera.alt.Logicalid = camera;\nmsg.payload.NVR.ThisCamera.PTZMenu = OpenPTZMenu;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 1000,
+        "wires": [
+            [
+                "05c8545ace00b4a6"
+            ]
+        ]
+    },
+    {
+        "id": "05c8545ace00b4a6",
+        "type": "subflow:056b35bf73ad55ce",
+        "z": "e391987ca15050dc",
+        "name": "Snapshot",
+        "x": 840,
+        "y": 1000,
+        "wires": [
+            [
+                "8ab4f25c6d68e5c1"
+            ]
+        ]
+    },
+    {
+        "id": "8ab4f25c6d68e5c1",
+        "type": "ui-template",
+        "z": "e391987ca15050dc",
+        "group": "cd82def3d884eb85",
+        "page": "",
+        "ui": "",
+        "name": "Snapshot",
+        "order": 1,
+        "width": "5",
+        "height": "3",
+        "head": "",
+        "format": "<template>\n    <div>\n        <v-img\n            v-if=\"hasValidImage\"\n            :width=\"msg.width || 550\"\n            aspect-ratio=\"msg.aspec || 16/9\"\n            cover\n            :src=\"msg.payload.NVR.ThisCamera.snapshot\"\n        ></v-img>\n        <div \n            v-else \n            class=\"placeholder-container\"\n            :style=\"{\n                width: (msg && msg.width ? msg.width : 250) + 'px',\n                height: ((msg && msg.width ? msg.width : 250) / (msg && msg.aspec ? msg.aspec : 16/9)) + 'px'\n            }\"\n        >\n            <div class=\"placeholder-content\">\n                <v-icon\n                    size=\"56\"\n                    color=\"grey darken-2\"\n                >mdi-video</v-icon>\n                <div class=\"placeholder-text\">{{ placeholderText }}</div>\n            </div>\n        </div>\n        <h3 v-if=\"msg.payload\" style=\"font-size: 28px; margin-top: 10px;\">{{ truncatedName }}</h3>\n    </div>\n</template>\n\n<script>\n    export default {\n        computed: {\n            hasValidImage() {\n                return this.msg && this.msg.payload && \n                       this.msg.payload.NVR && \n                       this.msg.payload.NVR.ThisCamera && \n                       this.msg.payload.NVR.ThisCamera.snapshot;\n            },\n            placeholderText() {\n                if (this.msg && this.msg.payload && \n                    this.msg.payload.NVR && \n                    this.msg.payload.NVR.ThisCamera) {\n                    \n                    // First check for alt.CameraName\n                    if (this.msg.payload.NVR.ThisCamera.alt && \n                        this.msg.payload.NVR.ThisCamera.alt.CameraName) {\n                        return this.msg.payload.NVR.ThisCamera.alt.CameraName;\n                    }\n                    // Fall back to the original name property if available\n                    else if (this.msg.payload.NVR.ThisCamera.name) {\n                        return this.msg.payload.NVR.ThisCamera.name;\n                    }\n                    // Finally fall back to the default message\n                    return 'Camera Name not defined';\n                }\n                return 'Camera Name not defined';\n            },\n            truncatedName() {\n                if (!this.msg || !this.msg.payload || !this.msg.payload.NVR || !this.msg.payload.NVR.ThisCamera || !this.msg.payload.NVR.ThisCamera.name) {\n                    return '';\n                }\n                let name = this.msg.payload.NVR.ThisCamera.name;\n                return name.length > 26 ? name.substring(0, 24) + \"\" : name;\n            },\n            info() {\n                if (!this.msg || !this.msg.payload) {\n                    return '';\n                }\n                if (this.msg.payload.length > 80) {\n                    return this.msg.payload.substring(0, 77) + \"\";\n                }\n                return this.msg.payload;\n            }\n        }\n    }\n</script>\n\n<style scoped>\n.placeholder-container {\n    background-color: #f5f5f5;\n    border-radius: 4px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    overflow: hidden;\n}\n\n.placeholder-content {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n    padding: 12px;\n}\n\n.placeholder-text {\n    margin-top: 12px;\n    color: #616161;\n    font-size: 16px;\n    font-weight: 500;\n}\n</style>",
+        "storeOutMessages": true,
+        "passthru": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 1020,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9b84de0f368ca4a8",
+        "type": "ui-button",
+        "z": "e391987ca15050dc",
+        "group": "e9a5dee9d5441b31",
+        "name": "Regel 3",
+        "label": "Rule 3",
+        "order": 3,
+        "width": "2",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "location-enter",
+        "iconPosition": "left",
+        "payload": "03RuleCommand",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "orange",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 900,
+        "y": 260,
+        "wires": [
+            [
+                "22154db447c4bc64"
+            ]
+        ]
+    },
+    {
+        "id": "6347c2aa341531bf",
+        "type": "ui-button",
+        "z": "e391987ca15050dc",
+        "group": "d9b8c8ecaafedbfd",
+        "name": "Preset 4",
+        "label": "Preset 4",
+        "order": 4,
+        "width": "2",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "location-enter",
+        "iconPosition": "left",
+        "payload": "06PresetCommand",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "blue",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 420,
+        "y": 380,
+        "wires": [
+            [
+                "30d9642f5b2c51a7"
+            ]
+        ]
+    },
+    {
+        "id": "22154db447c4bc64",
+        "type": "link out",
+        "z": "e391987ca15050dc",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "82698c564e94c318"
+        ],
+        "x": 1035,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "275ad26830957cbf",
+        "type": "ui-button",
+        "z": "e391987ca15050dc",
+        "group": "e9a5dee9d5441b31",
+        "name": "Regel 4",
+        "label": "Rule 4",
+        "order": 4,
+        "width": "2",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "location-enter",
+        "iconPosition": "left",
+        "payload": "04RuleCommand",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "orange",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 900,
+        "y": 300,
+        "wires": [
+            [
+                "22154db447c4bc64"
+            ]
+        ]
+    },
+    {
+        "id": "d9261a74608a4ccb",
+        "type": "ui-button",
+        "z": "e391987ca15050dc",
+        "group": "a2c671cbe65fb2e0",
+        "name": "Home",
+        "label": "Select 2",
+        "order": 2,
+        "width": "2",
+        "height": "3",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "home",
+        "iconPosition": "left",
+        "payload": "Login",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "violet",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 210,
+        "y": 160,
+        "wires": [
+            [
+                "2cc877c50b895a1d",
+                "cb680e9b36b74e79"
+            ]
+        ]
+    },
+    {
+        "id": "f7a5be4870442fd2",
+        "type": "comment",
+        "z": "e391987ca15050dc",
+        "name": "cut to disable api joystick",
+        "info": "if connected api joystick and rs232 joystick are running at same tinme but with different speeds not good unless ptz control is not enabled in client",
+        "x": 770,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "cfba0f8478b367a0",
+        "type": "inject",
+        "z": "e391987ca15050dc",
+        "d": true,
+        "name": "",
+        "props": [
+            {
+                "p": "payload.NVR",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "2",
+        "topic": "",
+        "x": 250,
+        "y": 820,
+        "wires": [
+            [
+                "94f5aa2787482d34"
+            ]
+        ]
+    },
+    {
+        "id": "94f5aa2787482d34",
+        "type": "function",
+        "z": "e391987ca15050dc",
+        "d": true,
+        "name": "106",
+        "func": "// Define the default values at the beginning\nconst Monitor = 1;\nconst altCameraName = \"Kamera 106\";\nconst OpenPTZMenu = true;\nconst camera = 106;\n\n// Initialize msg if it doesn't exist\nmsg = msg || {};\n// Initialize payload if it doesn't exist\nmsg.payload = msg.payload || {};\n// Initialize NVR if it doesn't exist\nmsg.payload.NVR = msg.payload.NVR || {};\n// Initialize ThisCamera if it doesn't exist\nmsg.payload.NVR.ThisCamera = msg.payload.NVR.ThisCamera || {};\n// Initialize alt object if it doesn't exist\nmsg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n\n// If cameras array exists, try to find the requested camera\nif (Array.isArray(msg.payload.NVR.cameras)) {\n    // Find the camera object with a matching logicalId\n    const foundCamera = msg.payload.NVR.cameras.find(cam => cam.logicalId === camera);\n\n    if (foundCamera) {\n        // Copy all properties from the found camera to ThisCamera\n        Object.assign(msg.payload.NVR.ThisCamera, foundCamera);\n\n        // Re-ensure alt object exists after assignment (it might get overwritten)\n        msg.payload.NVR.ThisCamera.alt = msg.payload.NVR.ThisCamera.alt || {};\n        msg.payload.NVR.ThisCamera.alt.offline = false;\n    } else {\n        // No matching camera found in the array\n        msg.payload.NVR.ThisCamera.alt.offline = true;\n    }\n    // Remove cameras array from the output\n    delete msg.payload.NVR.cameras;\n} else {\n    // No cameras array found or msg was empty\n    msg.payload.NVR.ThisCamera.alt.offline = true;\n}\n\n// Always set these values, regardless of whether we found a camera or received an empty message\nmsg.payload.NVR.ThisCamera.Monitor = Monitor;\nmsg.payload.NVR.ThisCamera.alt.CameraName = altCameraName;\nmsg.payload.NVR.ThisCamera.alt.Logicalid = camera;\nmsg.payload.NVR.ThisCamera.PTZMenu = OpenPTZMenu;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 820,
+        "wires": [
+            [
+                "f8c767a539b71494"
+            ]
+        ]
+    },
+    {
+        "id": "f8c767a539b71494",
+        "type": "debug",
+        "z": "e391987ca15050dc",
+        "d": true,
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "4b6dbbf29be23a5f",
+        "type": "function",
+        "z": "e391987ca15050dc",
+        "name": "msg.complete",
+        "func": "// Add msg.complete property to the incoming message (for Join node)\nmsg.complete = true;\n\n// Return the modified message\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 760,
+        "wires": [
+            [
+                "50859817a5d129b7"
+            ]
+        ]
+    },
+    {
+        "id": "b0cafd7661f5fe94",
+        "type": "function",
+        "z": "e391987ca15050dc",
+        "name": "combine",
+        "func": "// Get stored NVR from flow context\nlet storedNVR = flow.get('storedNVR') || null;\n\n// Check what type of message came in\nif (msg.payload.NVR !== undefined) {\n    // If it's an NVR message, store it for later use\n    storedNVR = msg.payload.NVR;\n    flow.set('storedNVR', storedNVR);\n    // Don't return anything for NVR messages\n    return null;\n} \nelse if (msg.payload.Joystick !== undefined) {\n    // If it's a Joystick message, combine with the stored NVR data\n    const combinedPayload = {\n        Joystick: msg.payload.Joystick,\n        NVR: storedNVR\n    };\n    \n    // Create new message with combined payload\n    const newMsg = {\n        payload: combinedPayload,\n        complete: true  // Add the complete property for Join node\n    };\n    \n    // Return the combined message\n    return newMsg;\n}\n\n// If it's neither type of message, don't return anything\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 820,
+        "wires": [
+            [
+                "9b07153a9a4f1083",
+                "dc874dc2391ade1b"
+            ]
+        ]
+    },
+    {
+        "id": "2051db2cf7ba327b",
+        "type": "comment",
+        "z": "e391987ca15050dc",
+        "name": "enable for RS232 joystick",
+        "info": "if connected api joystick and rs232 joystick are running at same tinme but with different speeds not good unless ptz control is not enabled in client",
+        "x": 1070,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "6fce53a365b503de",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "1",
+        "label": "1",
+        "order": 2,
+        "width": "1",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "1",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 370,
+        "y": 120,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "452381507cfa1ca3",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "2",
+        "label": "2",
+        "order": 3,
+        "width": "1",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "2",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 370,
+        "y": 160,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "a652f6ac9c21a08d",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "3",
+        "label": "3",
+        "order": 4,
+        "width": "1",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "3",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "227a8db0d7b7969b",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "4",
+        "label": "4",
+        "order": 5,
+        "width": "1",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "4",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 370,
+        "y": 240,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "1b5cdff6f41e1b6e",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "5",
+        "label": "5",
+        "order": 6,
+        "width": "1",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "5",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 370,
+        "y": 280,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "1a03f94fcda74291",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "6",
+        "label": "6",
+        "order": 7,
+        "width": "1",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "6",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 370,
+        "y": 320,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "951b520f623a106c",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "7",
+        "label": "7",
+        "order": 8,
+        "width": "1",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "7",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 370,
+        "y": 360,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "4b23cac8ea7828bb",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "8",
+        "label": "8",
+        "order": 9,
+        "width": "1",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "8",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 370,
+        "y": 400,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "89854cb69e89f080",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "9",
+        "label": "9",
+        "order": 10,
+        "width": "1",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "9",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 370,
+        "y": 440,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "44568ee6e8961165",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "0",
+        "label": "0",
+        "order": 12,
+        "width": "1",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "0",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 370,
+        "y": 480,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "2e926eb7ff4afe71",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "DELET",
+        "label": "",
+        "order": 11,
+        "width": "1",
+        "height": "2",
+        "emulateClick": true,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "backspace",
+        "iconPosition": "left",
+        "payload": "delete",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "red",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 380,
+        "y": 520,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "051ece811d3dfe9f",
+        "type": "ui-button",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "name": "Login",
+        "label": "",
+        "order": 13,
+        "width": "1",
+        "height": "2",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "key",
+        "iconPosition": "left",
+        "payload": "login",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "green",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 370,
+        "y": 560,
+        "wires": [
+            [
+                "6befa7ae21028190"
+            ]
+        ]
+    },
+    {
+        "id": "7391315fda761c2b",
+        "type": "ui-text",
+        "z": "db9e28e670678844",
+        "group": "ca4114309ebf5793",
+        "order": 1,
+        "width": "3",
+        "height": "3",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "style": true,
+        "font": "",
+        "fontSize": "65",
+        "color": "#ffffff",
+        "wrapText": false,
+        "className": "",
+        "x": 990,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "3c09b37f9b36fcc4",
+        "type": "debug",
+        "z": "db9e28e670678844",
+        "name": "PIN",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "6befa7ae21028190",
+        "type": "function",
+        "z": "db9e28e670678844",
+        "name": "function 1",
+        "func": "var pinBuffer = context.get(\"pinBuffer\") || \"\";\n\nif (typeof msg.payload === \"number\" || (typeof msg.payload === \"string\" && msg.payload.match(/^[0-9]$/))) {\n    pinBuffer += String(msg.payload);\n    if (pinBuffer.length > 6) {\n        pinBuffer = pinBuffer.slice(-6); // Keep only the last 6 digits\n    }\n    context.set(\"pinBuffer\", pinBuffer);\n    \n    var starMask = \"*\".repeat(pinBuffer.length);\n    return { payload: { keypad: { star: starMask } } };\n}\n\nif (msg.payload === \"login\") {\n    if (pinBuffer.length === 6) {\n        var pin = pinBuffer;\n        context.set(\"pinBuffer\", \"\"); // Clear buffer after login\n        node.send({ payload: { keypad: { pin: pin } } });\n        node.send({ payload: { keypad: { star: \"\" } } });\n        return null;\n    } else {\n        return null; // Ignore if PIN is incomplete\n    }\n}\n\nif (msg.payload === \"delete\") {\n    context.set(\"pinBuffer\", \"\"); // Clear stored digits\n    return { payload: { keypad: { star: \"\" } } };\n}\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 320,
+        "wires": [
+            [
+                "97fb41113aabda20",
+                "c96fbaaa7dc8a632"
+            ]
+        ]
+    },
+    {
+        "id": "632c13668dea5e23",
+        "type": "debug",
+        "z": "db9e28e670678844",
+        "name": "STAR",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 990,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "97fb41113aabda20",
+        "type": "function",
+        "z": "db9e28e670678844",
+        "name": "hide pin",
+        "func": "// Check if msg.payload.keypad.star exists\nif (msg.payload && msg.payload.keypad && msg.payload.keypad.star !== undefined) {\n    msg.payload = msg.payload.keypad.star; // Set payload to its contents\n    return msg; // Pass the modified message through\n} else {\n    return null; // Discard all other messages\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 280,
+        "wires": [
+            [
+                "632c13668dea5e23",
+                "7391315fda761c2b"
+            ]
+        ]
+    },
+    {
+        "id": "c96fbaaa7dc8a632",
+        "type": "function",
+        "z": "db9e28e670678844",
+        "name": "hide star",
+        "func": "// Check if msg.payload.keypad.star exists\nif (msg.payload && msg.payload.keypad && msg.payload.keypad.pin !== undefined) {\n    msg.payload = msg.payload.keypad.pin; // Set payload to its contents\n    return msg; // Pass the modified message through\n} else {\n    return null; // Discard all other messages\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 320,
+        "wires": [
+            [
+                "3c09b37f9b36fcc4",
+                "cb7f181287adc60b"
+            ]
+        ]
+    },
+    {
+        "id": "446e84317109a0fa",
+        "type": "inject",
+        "z": "db9e28e670678844",
+        "name": "",
+        "props": [
+            {
+                "p": "payload.keypad.star",
+                "v": "ERROR",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 670,
+        "y": 200,
+        "wires": [
+            [
+                "97fb41113aabda20"
+            ]
+        ]
+    },
+    {
+        "id": "b888da99dc4eae3c",
+        "type": "exec",
+        "z": "db9e28e670678844",
+        "command": "",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 730,
+        "y": 120,
+        "wires": [
+            [
+                "de4be80849cc83fd"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a84ee20a22391140",
+        "type": "inject",
+        "z": "db9e28e670678844",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "ls /home",
+        "payloadType": "str",
+        "x": 600,
+        "y": 120,
+        "wires": [
+            [
+                "b888da99dc4eae3c"
+            ]
+        ]
+    },
+    {
+        "id": "de4be80849cc83fd",
+        "type": "debug",
+        "z": "db9e28e670678844",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "fad1fdc2f3957867",
+        "type": "inject",
+        "z": "db9e28e670678844",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 210,
+        "y": 520,
+        "wires": [
+            [
+                "2e926eb7ff4afe71"
+            ]
+        ]
+    },
+    {
+        "id": "cb7f181287adc60b",
+        "type": "function",
+        "z": "db9e28e670678844",
+        "name": "login",
+        "func": "if (msg.payload === \"123456\") {\n    msg.payload = \"E1\";\n    return msg;\n} else {\n    return null;\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 990,
+        "y": 400,
+        "wires": [
+            [
+                "50ab216df79acd1d"
+            ]
+        ]
+    },
+    {
+        "id": "50ab216df79acd1d",
+        "type": "link out",
+        "z": "db9e28e670678844",
+        "name": "ui control",
+        "mode": "link",
+        "links": [
+            "826e4321a36bbe6d"
+        ],
+        "x": 1125,
+        "y": 400,
+        "wires": []
+    }
+]
